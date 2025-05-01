@@ -15,7 +15,7 @@ class AppTestCase(unittest.TestCase):
         self.app_context.pop()
 
     def test_facultad():
-        facultad = Falcultad()
+        facultad = Facultad()
 
 if __name__ == '__main__':
     unittest.main()
