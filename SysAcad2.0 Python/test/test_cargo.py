@@ -2,7 +2,8 @@ import unittest
 import os
 from flask import current_app
 from app import create_app
-from app.models import Cargo, CategoriaCargo
+from app.models.cargo import Cargo
+from app.models.categoria_cargo import CategoriaCargo
 
 class CargoTestCase(unittest.TestCase):
     def setUp(self):
@@ -26,7 +27,8 @@ class CargoTestCase(unittest.TestCase):
         self.assertEqual(cargo.nombre, "Decano")
         self.assertEqual(cargo.puntos, 100)
         
-
+if __name__ == '__main__':
+    unittest.main()
 
 
 

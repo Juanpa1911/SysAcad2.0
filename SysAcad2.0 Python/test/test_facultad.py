@@ -1,7 +1,7 @@
 import unittest
 from flask import current_app
 from app import create_app
-from app.models import Facultad
+from app.models.facultad import Facultad
 import os
 
 class FacultadTestCase(unittest.TestCase):
@@ -12,7 +12,7 @@ class FacultadTestCase(unittest.TestCase):
         self.app_context = self.app.app_context()
         self.app_context.push()
 
-    def tearDown(self):
+    def tearDown(self): 
         self.app_context.pop()
 
     def test_facultad_creation(self):

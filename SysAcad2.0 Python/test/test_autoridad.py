@@ -2,7 +2,10 @@ import unittest
 import os
 from flask import current_app
 from app import create_app
-from app.models import Autoridad, Cargo, CategoriaCargo, TipoDedicacion
+from app.models.autoridad import Autoridad
+from app.models.cargo import Cargo
+from app.models.categoria_cargo import CategoriaCargo
+from app.models.tipo_dedicacion import TipoDedicacion
 
 class AutoridadTestCase(unittest.TestCase):
     def setUp(self):
@@ -40,6 +43,9 @@ class AutoridadTestCase(unittest.TestCase):
         autoridad.cargo= cargo
         autoridad.telefono= "123456789"
         autoridad.email= "abc@gmail.com"
+        
+if __name__ == '__main__':
+    unittest.main()
 
 
 

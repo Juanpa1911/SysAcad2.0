@@ -2,9 +2,9 @@ import unittest
 import os
 from flask import current_app
 from app import create_app
-from app.models import TipoDedicacion
+from app.models.tipo_dedicacion import TipoDedicacion
 
-class CategoriaCargoTestCase(unittest.TestCase):
+class TipoDedicacionTestCase(unittest.TestCase):
     def setUp(self):
         os.environ['FLASK_CONTEXT'] = 'testing'
         self.app = create_app()
@@ -23,3 +23,5 @@ class CategoriaCargoTestCase(unittest.TestCase):
         self.assertIsNotNone(tipo_dedicacion.observacion)
         self.assertEqual(tipo_dedicacion.observacion, "Observacion 1")
         
+if __name__ == '__main__':
+    unittest.main()
