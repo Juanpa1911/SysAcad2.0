@@ -5,3 +5,7 @@
 /SysAcad2.0 Python/app/repositories/__pycache__
 /SysAcad2.0 Python/app/services/__pycache__
 /SysAcad2.0 Python/app/resources/__pycache__
+/SysAcad2 Python/migrations
+/SysAcad2 Python/venv
+/SysAcad2 Python/.env
+
