@@ -62,6 +62,7 @@ package "Sistema Académico"{
     }
 
     class Grupo {
+        - id: int
         - nombre: str
     }
 
