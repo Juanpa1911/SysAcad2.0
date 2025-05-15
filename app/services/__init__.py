@@ -1,2 +1,3 @@
 from .facultad_service import FacultadService
 from .grupo_service import GrupoService
+from .categoria_cargo_service import CategoriaCargoService

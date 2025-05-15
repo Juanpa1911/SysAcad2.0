@@ -33,7 +33,6 @@ class AppTestCase(unittest.TestCase):
         self.assertIsNotNone(grupo.id)
         self.assertGreaterEqual(grupo.id, 1)
         self.assertEqual(grupo.nombre, "Grupo1")
-
         
     def test_grupo_busqueda(self):
         grupo = self.__nuevoGrupo()

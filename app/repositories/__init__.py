@@ -1,2 +1,3 @@
 from .facultad_repositorio import FacultadRepository
 from .grupo_repositorio import GrupoRepository
+from .categoria_cargo_repositorio import CategoriaCargoRepository
