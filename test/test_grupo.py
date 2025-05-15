@@ -1,10 +1,11 @@
 import unittest
 from flask import current_app
 from app import create_app
-import os
 from app.models import Grupo
 from app.services import GrupoService
 from app import db
+import os
+
 class AppTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -12,6 +13,7 @@ class AppTestCase(unittest.TestCase):
         self.app = create_app()
         self.app_context = self.app.app_context()
         self.app_context.push()
+        db.create_all()
 
     def tearDown(self):
         db.session.remove()
