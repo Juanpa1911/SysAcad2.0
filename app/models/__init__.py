@@ -4,3 +4,4 @@ from .categoria_cargo import CategoriaCargo
 from .tipo_dedicacion import TipoDedicacion
 from .facultad import Facultad
 from .grupo import Grupo
+from .departamento import Departamento

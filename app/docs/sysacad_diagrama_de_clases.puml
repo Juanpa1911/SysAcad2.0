@@ -103,7 +103,9 @@ package "Sistema Académico"{
     }
 
     class Departamento {
+        - id :int
         - nombre: str
+        - description : str
     }
 
 
