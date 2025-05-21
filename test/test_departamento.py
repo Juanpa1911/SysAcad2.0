@@ -1,12 +1,10 @@
 import unittest
+import os
 from flask import current_app
 from app import create_app, db
-import os
 from app.models.departamento import Departamento
 from app.repositories.departamento_repositorio import DepartamentoRepository
 from app.services.departamento_service import DepartamentoService
-
-
 
 class AppTestCase(unittest.TestCase):
 
@@ -21,106 +19,70 @@ class AppTestCase(unittest.TestCase):
         db.session.remove()
         db.drop_all()
         self.app_context.pop()
-    
+
     def test_departamento_creation(self):
-        departamento = Departamento()
-        departamento.nombre = "Secretaria"
-        departamento.descripcion = "Secretaria de la empresa"
+        departamento = self.__nuevoDepartamento()
         db.session.add(departamento)
         db.session.commit()
-        # Verificadores para la creación del departamento
-        self.assertIsNotNone(departamento) 
-        self.assertEqual(departamento.nombre, "Secretaria") 
-        self.assertIsNotNone(departamento.nombre) # Verifica que el nombre no sea None
-        # verificadores para la descripcion
-        self.assertEqual(departamento.descripcion, "Secretaria de la empresa") # Verifica que la descripcion no sea None
-        self.assertIsNotNone(departamento.descripcion) # Verifica que la descripcion no sea None
-        # Verificadores para el id
-        self.assertIsInstance(departamento.id, int)# Verifica que el id fue asignado automáticamente
-        self.assertGreater(departamento.id, 0)
-    
+        self._assert_departamento(departamento, "ofina de alumnos", "oficina de alumnos de la facultad de ingenieria")
+
     def test_crear_departamento(self):
-        departamento = Departamento()
-        departamento.nombre = "ofina de alumnos"
-        departamento.descripcion = "oficina de alumnos de la facultad de ingenieria"
-        db.session.add(departamento)
-        db.session.commit()
+        departamento = self.__nuevoDepartamento()
+        DepartamentoService.crear_departamento(departamento)
         self.assertIsNotNone(departamento)
-        self.assertIsNotNone(departamento.id)
-        self.assertGreaterEqual(departamento.id, 1)
-        self.assertEqual(departamento.nombre, "ofina de alumnos")
-    
+        
     def test_buscar_por_id(self):
-        departamento = Departamento()
-        departamento.nombre = "ofina de alumnos"
-        departamento.descripcion = "oficina de alumnos de la facultad de ingenieria"
-        db.session.add(departamento)
-        db.session.commit()
-        encontrado = Departamento.query.get(departamento.id)
-        self.assertIsNotNone(encontrado)
-        self.assertEqual(encontrado.nombre, "ofina de alumnos")
+        departamento = self.__nuevoDepartamento()
+        DepartamentoService.crear_departamento(departamento)
+        encontrado = DepartamentoService.buscar_por_id(departamento.id)
+        self._assert_departamento(encontrado, "ofina de alumnos", "oficina de alumnos de la facultad de ingenieria")
 
     def test_buscar_todos(self):
-        departamento1 = Departamento()
-        departamento1.nombre = "ofina de alumnos"
-        departamento1.descripcion = "oficina de alumnos de la facultad de ingenieria"
-        db.session.add(departamento1)
-        
-        departamento2 = Departamento()
-        departamento2.nombre = "ofina de profesores"
-        departamento2.descripcion = "oficina de profesores de la facultad de ingenieria"
-        db.session.add(departamento2)
-        
-        db.session.commit()
-        
-        departamentos = Departamento.query.all()
+        departamento1 = self.__nuevoDepartamento()
+        departamento2 = self.__nuevoDepartamento2()
+        DepartamentoService.crear_departamento(departamento1)
+        DepartamentoService.crear_departamento(departamento2)
+        departamentos = DepartamentoService.buscar_todos()
+        self.assertIsNotNone(departamentos)
         self.assertEqual(len(departamentos), 2)
-        self.assertIn(departamento1, departamentos)
-        self.assertIn(departamento2, departamentos)
 
     def test_actualizar_departamento(self):
-        departamento = Departamento()
-        departamento.nombre = "ofina de alumnos"
-        departamento.descripcion = "oficina de alumnos de la facultad de ingenieria"
-        db.session.add(departamento)
-        db.session.commit()
-        
-        departamento.nombre = "oficina de alumnos"
-        db.session.commit()
-        
-        actualizado = Departamento.query.get(departamento.id)
-        self.assertEqual(actualizado.nombre, "oficina de alumnos")
+        departamento = self.__nuevoDepartamento()
+        DepartamentoService.crear_departamento(departamento)
+        departamento.nombre = "oficina de alumnos actualizada"
+        departamento.descripcion = "oficina de alumnos de la facultad de ingenieria actualizada"
+        DepartamentoService.actualizar_departamento(departamento.id, departamento)
+        encontrado = DepartamentoService.buscar_por_id(departamento.id)
+        self._assert_departamento(encontrado, "oficina de alumnos actualizada", "oficina de alumnos de la facultad de ingenieria actualizada")
 
     def test_borrar_departamento(self):
-        departamento = Departamento()
-        departamento.nombre = "ofina de alumnos"
-        departamento.descripcion = "oficina de alumnos de la facultad de ingenieria"
-        db.session.add(departamento)
-        db.session.commit()
-        
-        db.session.delete(departamento)
-        db.session.commit()
-        
-        encontrado = Departamento.query.get(departamento.id)
+        departamento = self.__nuevoDepartamento()
+        DepartamentoService.crear_departamento(departamento)
+        DepartamentoService.borrar_por_id(departamento.id)
+        encontrado = DepartamentoService.buscar_por_id(departamento.id)
         self.assertIsNone(encontrado)
-    
+        
+        
+# metodo para crear un nuevo departamento y no repetir tanto codigo
     def __nuevoDepartamento(self):
         departamento = Departamento()
         departamento.nombre = "ofina de alumnos"
         departamento.descripcion = "oficina de alumnos de la facultad de ingenieria"
         return departamento
-
-    def __nuevoDepartamento2(self):
-        departamento2 = Departamento()
-        departamento2.nombre = "ofina de profesores"
-        departamento2.descripcion = "oficina de profesores de la facultad de ingenieria"
-        return departamento2
     
-    def __nuevoDepartamento3(self):
-        departamento3 = Departamento()
-        departamento3.nombre = "ofina de administracion"
-        departamento3.descripcion = "oficina de administracion de la facultad de ingenieria"
-        return departamento3
+    def __nuevoDepartamento2(self):
+        departamento = Departamento()
+        departamento.nombre = "ofina de profesores"
+        departamento.descripcion = "oficina de profesores de la facultad de ingenieria"
+        return departamento
+
+    #metodo para ver si el departamento fue creado y no repetir tantos asserts
+    def _assert_departamento(self, departamento, nombre, descripcion):
+        self.assertIsNotNone(departamento)
+        self.assertIsNotNone(departamento.id)
+        self.assertGreaterEqual(departamento.id, 1)
+        self.assertEqual(departamento.nombre, nombre)
+        self.assertEqual(departamento.descripcion, descripcion)
 
 if __name__ == '__main__':
     unittest.main()
