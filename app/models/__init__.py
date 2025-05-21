@@ -7,3 +7,4 @@ from .grupo import Grupo
 from .departamento import Departamento
 from .universidad import Universidad
 from .orientacion import Orientacion
+from .grado import Grado
