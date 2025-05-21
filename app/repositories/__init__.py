@@ -3,3 +3,4 @@ from .grupo_repositorio import GrupoRepository
 from .categoria_cargo_repositorio import CategoriaCargoRepository
 from .universidad_repositorio import UniversidadRepository
 from .departamento_repositorio import DepartamentoRepository
+from .orientacion_repositorio import OrientacionRepository
