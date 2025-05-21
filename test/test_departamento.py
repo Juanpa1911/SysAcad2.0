@@ -3,7 +3,6 @@ from flask import current_app
 from app import create_app, db
 import os
 from app.models.departamento import Departamento
-from app.repositories.departamento_repositorio import DepartamentoRepository
 from app.services.departamento_service import DepartamentoService
 
 

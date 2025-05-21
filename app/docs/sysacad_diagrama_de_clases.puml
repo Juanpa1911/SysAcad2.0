@@ -22,11 +22,13 @@ package "Sistema Académico"{
     }
 
     class Universidad {
+        -id: int
         -nombre: str
         -sigla: str
     }
 
     class Facultad {
+        -id: int
         -nombre: str
         -abreviatura: str
         -directorio: str
