@@ -5,3 +5,6 @@ from .tipo_dedicacion import TipoDedicacion
 from .facultad import Facultad
 from .grupo import Grupo
 from .departamento import Departamento
+from .universidad import Universidad
+from .orientacion import Orientacion
+from .grado import Grado

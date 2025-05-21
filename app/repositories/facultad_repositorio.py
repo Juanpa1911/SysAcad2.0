@@ -6,7 +6,7 @@ class FacultadRepository:
     Clase de repositorio para la entidad Facultad.
     """
     @staticmethod
-    def crear(facultad):
+    def crear_facultad(facultad):
         """
         Crea una nueva facultad en la base de datos.
         :param facultad: Objeto Facultad a crear.

@@ -14,7 +14,7 @@ class FacultadService:
         :param facultad: Objeto Facultad a crear.
         :return: Objeto Facultad creado.
         """
-        FacultadRepository.crear(facultad)
+        FacultadRepository.crear_facultad(facultad)
     
     @staticmethod
     def buscar_por_id(id: int) -> Facultad:
