@@ -28,7 +28,7 @@ class AppTestCase(unittest.TestCase):
     def test_crear_departamento(self):
         departamento = self.__nuevoDepartamento()
         DepartamentoService.crear_departamento(departamento)
-        self.assertIsNotNone(departamento)
+        self._assert_departamento(departamento, "ofina de alumnos", "oficina de alumnos de la facultad de ingenieria")
         
     def test_buscar_por_id(self):
         departamento = self.__nuevoDepartamento()
@@ -82,6 +82,5 @@ class AppTestCase(unittest.TestCase):
         self.assertGreaterEqual(departamento.id, 1)
         self.assertEqual(departamento.nombre, nombre)
         self.assertEqual(departamento.descripcion, descripcion)
-
 if __name__ == '__main__':
     unittest.main()

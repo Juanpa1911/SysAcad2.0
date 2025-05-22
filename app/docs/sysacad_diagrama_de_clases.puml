@@ -96,6 +96,7 @@ package "Sistema Académico"{
     } 
    
     class Materia {
+        - idMateria: int
         - nombre: str
         - codigo: str
         - observacion: str

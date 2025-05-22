@@ -8,3 +8,4 @@ from .tipo_dedicacion import TipoDedicacion
 from .facultad import Facultad
 from .universidad import Universidad
 from .orientacion import Orientacion
+from. materia import Materia
