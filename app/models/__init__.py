@@ -1,4 +1,5 @@
 from .grupo import Grupo
+from .area import Area
 from .grado import Grado
 from .departamento import Departamento
 from .autoridad import Autoridad

@@ -1,4 +1,5 @@
 from .grupo_repositorio import GrupoRepository
+from .area_repositorio import AreaRepository
 from .grado_repositorio import GradoRepository
 from .departamento_repositorio import DepartamentoRepository
 from .facultad_repositorio import FacultadRepository

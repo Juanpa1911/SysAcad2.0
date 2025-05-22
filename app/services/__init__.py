@@ -1,4 +1,5 @@
 from .grupo_service import GrupoService
+from .area_service import AreaService
 from .grado_service import GradoService
 from .departamento_service import DepartamentoService
 from .facultad_service import FacultadService
