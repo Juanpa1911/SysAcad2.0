@@ -7,3 +7,4 @@ from .categoria_cargo_service import CategoriaCargoService
 from .universidad_service import UniversidadService
 from .orientacion_service import OrientacionService
 from .materia_service import MateriaService
+from .plan_service import PlanService

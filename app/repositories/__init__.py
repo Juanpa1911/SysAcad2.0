@@ -7,3 +7,4 @@ from .categoria_cargo_repositorio import CategoriaCargoRepository
 from .universidad_repositorio import UniversidadRepository
 from .orientacion_repositorio import OrientacionRepository
 from .materia_repositorio import MateriaRepository
+from .plan_repositorio import PlanRepository
