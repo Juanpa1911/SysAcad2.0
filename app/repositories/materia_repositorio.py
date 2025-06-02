@@ -12,7 +12,7 @@ class MateriaRepository:
     
     @staticmethod    
     def buscar_por_id(id: int):
-        return db.session.query(Materia).filter_by(idMateria=id).first()
+        return db.session.query(Materia).filter_by(id=id).first()
     
     @staticmethod
     def buscar_todos():
@@ -27,7 +27,7 @@ class MateriaRepository:
     
     @staticmethod
     def borrar_por_id(id: int) -> Materia:
-        materia = db.session.query(Materia).filter_by(idMateria=id).first()
+        materia = db.session.query(Materia).filter_by(id=id).first()
         if not materia:
             return None
         db.session.delete(materia)

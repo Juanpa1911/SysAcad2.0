@@ -1,11 +1,20 @@
 from dataclasses import dataclass
+from app import db
 from app.models.categoria_cargo import CategoriaCargo
 from app.models.tipo_dedicacion import TipoDedicacion
 
 
 @dataclass(init=False, repr=True, eq=True)
-class Cargo:
-    nombre: str
-    puntos: int
-    categoria_cargo: CategoriaCargo
-    tipo_dedicacion: TipoDedicacion
+class Cargo(db.Model):  
+    __tablename__ = 'cargos'
+    id: int = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nombre: str = db.Column(db.String(100), nullable=False, unique=True)
+    puntos: int = db.Column(db.Integer, nullable=False)
+
+    # Claves foráneas
+    categoria_cargo_id = db.Column(db.Integer, db.ForeignKey('categorias_cargos.id'))
+    tipo_dedicacion_id = db.Column(db.Integer, db.ForeignKey('tipos_dedicacion.id'))
+
+    # Relaciones
+    categoria_cargo = db.relationship('CategoriaCargo')
+    tipo_dedicacion = db.relationship('TipoDedicacion')

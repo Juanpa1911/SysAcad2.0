@@ -2,12 +2,17 @@ from .grupo import Grupo
 from .area import Area
 from .grado import Grado
 from .departamento import Departamento
-from .autoridad import Autoridad
-from .cargo import Cargo
 from .categoria_cargo import CategoriaCargo
 from .tipo_dedicacion import TipoDedicacion
+from .cargo import Cargo
 from .facultad import Facultad
 from .universidad import Universidad
 from .orientacion import Orientacion
+<<<<<<< Updated upstream
 from . materia import Materia
 from .plan import Plan
+=======
+from .relations import autoridades_materias
+from. materia import Materia
+from .autoridad import Autoridad
+>>>>>>> Stashed changes

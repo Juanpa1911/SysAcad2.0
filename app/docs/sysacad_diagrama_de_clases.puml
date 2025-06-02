@@ -1,6 +1,11 @@
 @startuml Diagrama de Clases de sysacad
 package "Sistema Académico"{
     package "Personas"{
+        class usuario{
+            - username: str
+            - password: str
+            -activated: bool
+        }
         class Alumno {
             - apellido: str
             - nombre: str
@@ -86,6 +91,7 @@ package "Sistema Académico"{
     }
 
     class Cargo {
+        - id: int
         - nombre: str
         - puntos: int
         
@@ -113,7 +119,7 @@ package "Sistema Académico"{
         - description : str
     }
 
-
+    usuario -- Alumno
     Orientacion -- Especialidad
     Orientacion -- Plan
     Orientacion -- Materia
