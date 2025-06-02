@@ -8,11 +8,11 @@ from .cargo import Cargo
 from .facultad import Facultad
 from .universidad import Universidad
 from .orientacion import Orientacion
-<<<<<<< Updated upstream
 from . materia import Materia
 from .plan import Plan
-=======
 from .relations import autoridades_materias
 from. materia import Materia
 from .autoridad import Autoridad
->>>>>>> Stashed changes
+from .relations import autoridades_materias
+from. materia import Materia
+from .autoridad import Autoridad
