@@ -8,4 +8,4 @@ class TipoDedicacion(db.Model):
     nombre: str = db.Column(db.String(100), nullable=False) 
     observacion: str = db.Column(db.String(255), nullable=True)
     
-    
+    #relaciones
