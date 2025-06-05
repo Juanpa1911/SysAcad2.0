@@ -10,3 +10,8 @@ class Plan(db.Model):
     fechaInicio: str = db.Column(db.String(10), nullable=True)
     fechaFin: str = db.Column(db.String(10), nullable=True)
     observacion: str = db.Column(db.String(255), nullable=True)
+
+    # Relación con Orientación (similar a Materia)
+    orientacion_id: int = db.Column(
+        db.Integer, db.ForeignKey('orientaciones.id'))
+    orientacion = db.relationship('Orientacion')

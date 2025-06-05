@@ -3,7 +3,6 @@ from app.models.plan import Plan
 
 
 class PlanRepository:
-
     @staticmethod
     def crear(plan: Plan):
         db.session.add(plan)

@@ -25,6 +25,7 @@ class PlanService:
         plan_existente.fechaInicio = plan.fechaInicio
         plan_existente.fechaFin = plan.fechaFin
         plan_existente.observacion = plan.observacion
+        plan_existente.orientacion_id = plan.orientacion_id
 
         return PlanRepository.actualizar_plan(plan_existente)
 

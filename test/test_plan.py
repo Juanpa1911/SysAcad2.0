@@ -1,10 +1,12 @@
 import unittest
+import os
 from flask import current_app
 from app import create_app
-from app.models import Plan
-from app.services import PlanService
+from app.models.plan import Plan
+from app.models.orientacion import Orientacion
+from app.services.plan_service import PlanService
+from app.services.orientacion_service import OrientacionService
 from app import db
-import os
 
 
 class PlanTestCase(unittest.TestCase):
@@ -29,7 +31,6 @@ class PlanTestCase(unittest.TestCase):
         self.assertEqual(plan.fechaFin, "2027-12-31")
         self.assertEqual(plan.observacion, "Plan de estudios actualizado")
 
-    # Métodos CRUD
     def test_crear_plan(self):
         plan = self.__nuevoPlan()
         PlanService.crear_plan(plan)
@@ -71,6 +72,21 @@ class PlanTestCase(unittest.TestCase):
         self.assertIsNotNone(resultado)
         plan_borrado = PlanService.buscar_por_id(plan.id)
         self.assertIsNone(plan_borrado)
+
+    def test_plan_con_orientacion(self):
+        # Crear una orientación
+        orientacion = Orientacion()
+        orientacion.nombre = "Orientación de Prueba"
+        OrientacionService.crear_orientacion(orientacion)
+
+        # Crear un plan asociado a la orientación
+        plan = self.__nuevoPlan()
+        plan.orientacion_id = orientacion.id
+        PlanService.crear_plan(plan)
+
+        # Verificar que la relación se guardó correctamente
+        plan_encontrado = PlanService.buscar_por_id(plan.id)
+        self.assertEqual(plan_encontrado.orientacion_id, orientacion.id)
 
     def __nuevoPlan(self, nombre="Plan 2023"):
         plan = Plan()
