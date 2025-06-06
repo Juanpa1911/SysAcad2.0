@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from app import db
-from app.models.categoria_cargo import CategoriaCargo
-from app.models.tipo_dedicacion import TipoDedicacion
+
 
 
 @dataclass(init=False, repr=True, eq=True)
@@ -18,3 +17,4 @@ class Cargo(db.Model):
     # Relaciones
     categoria_cargo = db.relationship('CategoriaCargo')
     tipo_dedicacion = db.relationship('TipoDedicacion')
+

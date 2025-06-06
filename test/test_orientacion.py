@@ -5,7 +5,9 @@ from app.models import Orientacion
 from app.services import OrientacionService
 from app import db
 import os
-from metodosDePrueba import nuevoOrientacion
+from metodosDePrueba import nuevoOrientacion, nuevoOrientacion2
+
+
 class AppTestCase(unittest.TestCase): 
 
     def setUp(self):
@@ -44,7 +46,7 @@ class AppTestCase(unittest.TestCase):
     
     def test_buscar_orientaciones(self):
         orientacion1 = nuevoOrientacion()
-        orientacion2 = nuevoOrientacion()
+        orientacion2 = nuevoOrientacion2()
         OrientacionService.crear_orientacion(orientacion1)
         OrientacionService.crear_orientacion(orientacion2)
         orientaciones = OrientacionService.buscar_todos()
