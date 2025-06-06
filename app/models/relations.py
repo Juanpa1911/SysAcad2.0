@@ -5,4 +5,3 @@ autoridades_materias = db.Table(
     db.Column('autoridad_id', db.Integer, db.ForeignKey('autoridades.id'), primary_key=True),
     db.Column('materia_id', db.Integer, db.ForeignKey('materias.id'), primary_key=True)
 )
-

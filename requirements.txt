@@ -1,9 +1,5 @@
-Flask==3.1.0
-Flask-SQLAlchemy==3.1.1
-SQLAlchemy==2.0.40
-psycopg2==2.9.10
-psycopg[binary]
-python-dotenv==1.1.0
+
+v==1.1.0
 Flask-Migrate==4.1.0
 flask-marshmallow==1.3.0
 marshmallow==4.0.0

@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from app.models.orientacion import Orientacion
 from app import db
 
 @dataclass(init=False, repr=True, eq=True)
@@ -10,9 +9,10 @@ class Materia(db.Model):
     codigo: str = db.Column(db.String(50), nullable=False)
     observacion: str = db.Column(db.String(255), nullable=True)
     
+    
     orientacion_id: int = db.Column(db.Integer, db.ForeignKey('orientaciones.id'))
-    orientacion = db.relationship('Orientacion')
-    # El backref se usa cuando es bidireccional (muchos a muchos))
+    orientacion = db.relationship('Orientacion', back_populates='materias')    # El backref se usa cuando es bidireccional (muchos a muchos))
+   
     autoridades = db.relationship('Autoridad', secondary='autoridades_materias', back_populates='materias')
     
     def asociar_autoridad(self, autoridad):
@@ -22,3 +22,4 @@ class Materia(db.Model):
     def desasociar_autoridad(self, autoridad):
         if autoridad in self.autoridades:
             self.autoridades.remove(autoridad)
+            

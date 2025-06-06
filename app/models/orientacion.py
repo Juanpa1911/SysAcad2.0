@@ -7,4 +7,6 @@ class Orientacion(db.Model):
     id: int = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nombre: str = db.Column(db.String(100), nullable=False)
     
+    materias = db.relationship('Materia', back_populates='orientacion' )
     
+#relacion con materias

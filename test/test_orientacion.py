@@ -5,7 +5,7 @@ from app.models import Orientacion
 from app.services import OrientacionService
 from app import db
 import os
-
+from metodosDePrueba import nuevoOrientacion
 class AppTestCase(unittest.TestCase): 
 
     def setUp(self):
@@ -21,14 +21,14 @@ class AppTestCase(unittest.TestCase):
         self.app_context.pop()
     
     def test_orientacion_creation(self):
-        orientacion = self.__nuevoOrientacion()
+        orientacion = nuevoOrientacion()
         self.assertIsNotNone(orientacion)
         self.assertEqual(orientacion.nombre, "Orientacion1")
         self.assertIsNotNone(orientacion.nombre)
 
     # Metodos CRUD
     def test_crear_orientacion(self):
-        orientacion = self.__nuevoOrientacion()
+        orientacion = nuevoOrientacion()
         OrientacionService.crear_orientacion(orientacion)
         self.assertIsNotNone(orientacion)
         self.assertIsNotNone(orientacion.id)
@@ -36,15 +36,15 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(orientacion.nombre, "Orientacion1")
 
     def test_orientacion_busqueda(self):
-        orientacion = self.__nuevoOrientacion()
+        orientacion = nuevoOrientacion()
         OrientacionService.crear_orientacion(orientacion)
         OrientacionService.buscar_por_id(orientacion.id)
         self.assertIsNotNone(orientacion)
         self.assertEqual(orientacion.nombre, "Orientacion1")
     
     def test_buscar_orientaciones(self):
-        orientacion1 = self.__nuevoOrientacion()
-        orientacion2 = self.__nuevoOrientacion()
+        orientacion1 = nuevoOrientacion()
+        orientacion2 = nuevoOrientacion()
         OrientacionService.crear_orientacion(orientacion1)
         OrientacionService.crear_orientacion(orientacion2)
         orientaciones = OrientacionService.buscar_todos()
@@ -52,23 +52,16 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(len(orientaciones), 2)
         
     def test_actualizar_orientacion(self):
-        orientacion = self.__nuevoOrientacion()
+        orientacion = nuevoOrientacion()
         OrientacionService.crear_orientacion(orientacion)
         orientacion.nombre = "Orientacion2"
         orientacion_actualizada = OrientacionService.actualizar_orientacion(orientacion.id, orientacion)
         self.assertEqual(orientacion_actualizada.nombre, "Orientacion2")
 
     def test_borrar_orientacion(self):
-        orientacion = self.__nuevoOrientacion()
+        orientacion = nuevoOrientacion()
         OrientacionService.crear_orientacion(orientacion)
         db.session.delete(orientacion)
         db.session.commit()
         orientacion_borrada = OrientacionService.buscar_por_id(orientacion.id)
         self.assertIsNone(orientacion_borrada)
-
-
-    def __nuevoOrientacion(self):
-        orientacion = Orientacion()
-        orientacion.nombre = "Orientacion1"
-        return orientacion    
-        
