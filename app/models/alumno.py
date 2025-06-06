@@ -1,0 +1,20 @@
+from app import db
+from datetime import date
+from dataclasses import dataclass
+
+@dataclass(init=False, repr=True, eq=True)
+class Alumno(db.Model):
+    __tablename__ = 'alumnos'
+    
+    id : int = db.Column(db.Integer, primary_key=True)
+    apellido : str = db.Column(db.String(100), nullable=False)
+    nombre : str = db.Column(db.String(100), nullable=False)
+    nroDocumento : str = db.Column(db.String(20), unique=True, nullable=False)
+    tipo_documento_id : int = db.Column(db.Integer, db.ForeignKey('tipos_documento.id'), nullable=False)
+    tipoDocumento = db.relationship('TipoDocumento')
+    fechaNacimiento = db.Column(db.String(10), nullable=False)  # formato YYYY-MM-DD
+    sexo : str = db.Column(db.String(1), nullable=False)  # 'M' o 'F'
+    nroLegajo = db.Column(db.Integer, unique=True, nullable=False)
+    fechaIngreso = db.Column(db.Date, nullable=False, default=date.today)
+    
+    
