@@ -5,6 +5,7 @@ from .departamento_repositorio import DepartamentoRepository
 from .facultad_repositorio import FacultadRepository
 from .categoria_cargo_repositorio import CategoriaCargoRepository
 from .tipo_dedicacion_repositorio import TipoDedicacionRepository
+from .tipo_especialidad_repositorio import TipoEspecialidadRepository
 from .universidad_repositorio import UniversidadRepository
 from .orientacion_repositorio import OrientacionRepository
 from .materia_repositorio import MateriaRepository

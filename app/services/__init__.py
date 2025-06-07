@@ -5,6 +5,7 @@ from .departamento_service import DepartamentoService
 from .facultad_service import FacultadService
 from .categoria_cargo_service import CategoriaCargoService
 from .tipo_dedicacion_service import TipoDedicacionService
+from .tipo_especialidad_service import TipoEspecialidadService
 from .universidad_service import UniversidadService
 from .orientacion_service import OrientacionService
 from .materia_service import MateriaService

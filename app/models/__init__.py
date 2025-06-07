@@ -4,6 +4,7 @@ from .grado import Grado
 from .departamento import Departamento
 from .categoria_cargo import CategoriaCargo
 from .tipo_dedicacion import TipoDedicacion
+from .tipo_especialidad import TipoEspecialidad
 from .cargo import Cargo
 from .facultad import Facultad
 from .universidad import Universidad
