@@ -10,6 +10,7 @@ from .universidad import Universidad
 from .orientacion import Orientacion
 from .materia import Materia
 from .plan import Plan
+from .especialidad import Especialidad
 from .relations import autoridades_materias
 from. materia import Materia
 from .autoridad import Autoridad

@@ -122,3 +122,22 @@ def tipoDeCargo3():
     tipo_dedicacion.nombre = "Simple2"
     tipo_dedicacion.observacion = "Observacion 2"
     return tipo_dedicacion
+
+
+
+#-----------------------------------------------------------------------------
+# ESPECIALIDAD
+#-----------------------------------------------------------------------------
+def nuevaEspecialidad():
+    especialidad = Especialidad()
+    especialidad.nombre = "Especialidad 1"
+    especialidad.letra = "a"
+    especialidad.observacion = "Observacion 1"
+    return especialidad
+
+def nuevaEspecialidad2():
+    especialidad = Especialidad()
+    especialidad.nombre = "Especialidad 2"
+    especialidad.letra = "b"
+    especialidad.observacion = "Observacion 2"
+    return especialidad

@@ -9,4 +9,5 @@ from .universidad_repositorio import UniversidadRepository
 from .orientacion_repositorio import OrientacionRepository
 from .materia_repositorio import MateriaRepository
 from .plan_repositorio import PlanRepository
+from .especialidad_repositorio import EspecialidadRepository
 from .cargo_repositorio import CargoRepository

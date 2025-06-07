@@ -9,4 +9,5 @@ from .universidad_service import UniversidadService
 from .orientacion_service import OrientacionService
 from .materia_service import MateriaService
 from .plan_service import PlanService
+from .especialidad_service import EspecialidadService
 from .cargo_service import CargoService
