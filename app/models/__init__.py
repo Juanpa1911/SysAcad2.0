@@ -13,10 +13,6 @@ from .materia import Materia
 from .plan import Plan
 from .especialidad import Especialidad
 from .relations import autoridades_materias
-from. materia import Materia
-from .autoridad import Autoridad
-from .relations import autoridades_materias
-from. materia import Materia
 from .autoridad import Autoridad
 from .tipo_documento import TipoDocumento
 from .alumno import Alumno

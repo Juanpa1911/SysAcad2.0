@@ -26,12 +26,12 @@ class AlumnoTestCase(unittest.TestCase):
         return Alumno(
             apellido="Pérez",
             nombre="Juan",
-            nroDocumento="30123456",
-            tipoDocumento=self.tipo_documento,
-            fechaNacimiento="1990-01-15",
+            nro_documento="30123456",
+            tipo_documento=self.tipo_documento,
+            fecha_nacimiento="1990-01-15",
             sexo="M",
-            nroLegajo=12345,
-            fechaIngreso=date.today()
+            nro_legajo=12345,
+            fecha_ingreso=date.today()
         )
     
     def test_alumno_creation(self):
@@ -39,10 +39,10 @@ class AlumnoTestCase(unittest.TestCase):
         self.assertIsNotNone(alumno)
         self.assertEqual(alumno.apellido, "Pérez")
         self.assertEqual(alumno.nombre, "Juan")
-        self.assertEqual(alumno.nroDocumento, "30123456")
-        self.assertEqual(alumno.tipoDocumento.nombre, "DNI")
+        self.assertEqual(alumno.nro_documento, "30123456")
+        self.assertEqual(alumno.tipo_documento.nombre, "DNI")
         self.assertEqual(alumno.sexo, "M")
-        self.assertEqual(alumno.nroLegajo, 12345)
+        self.assertEqual(alumno.nro_legajo, 12345)
     
     def test_crear_alumno(self):
         alumno = self.__nuevoAlumno()
@@ -50,17 +50,17 @@ class AlumnoTestCase(unittest.TestCase):
         self.assertIsNotNone(alumno.id)
         alumno_db = AlumnoService.buscar_alumno_id(alumno.id)
         self.assertEqual(alumno_db.apellido, alumno.apellido)
-        self.assertEqual(alumno_db.nroLegajo, alumno.nroLegajo)
+        self.assertEqual(alumno_db.nro_legajo, alumno.nro_legajo)
     
     def test_actualizar_alumno(self):
         alumno = self.__nuevoAlumno()
         AlumnoService.crear_alumno(alumno)
         alumno.apellido = "González"
-        alumno.nroLegajo = 54321
+        alumno.nro_legajo = 54321
         AlumnoService.actualizar_alumno(alumno)
         alumno_actualizado = AlumnoService.buscar_alumno_id(alumno.id)
         self.assertEqual(alumno_actualizado.apellido, "González")
-        self.assertEqual(alumno_actualizado.nroLegajo, 54321)
+        self.assertEqual(alumno_actualizado.nro_legajo, 54321)
     
     def test_eliminar_alumno(self):
         alumno = self.__nuevoAlumno()
@@ -73,6 +73,6 @@ class AlumnoTestCase(unittest.TestCase):
     def test_buscar_por_legajo(self):
         alumno = self.__nuevoAlumno()
         AlumnoService.crear_alumno(alumno)
-        alumno_encontrado = AlumnoService.buscar_alumno_legajo(alumno.nroLegajo)
+        alumno_encontrado = AlumnoService.buscar_alumno_legajo(alumno.nro_legajo)
         self.assertIsNotNone(alumno_encontrado)
-        self.assertEqual(alumno_encontrado.nroDocumento, alumno.nroDocumento)
+        self.assertEqual(alumno_encontrado.nro_documento, alumno.nro_documento)

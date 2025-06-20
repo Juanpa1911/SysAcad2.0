@@ -23,12 +23,12 @@ class AlumnoRepository:
     @staticmethod
     def buscar_alumno_legajo(nro_legajo):
         """Obtiene un alumno por su número de legajo"""
-        return Alumno.query.filter_by(nroLegajo=nro_legajo).first()
+        return Alumno.query.filter_by(nro_legajo=nro_legajo).first()
     
     @staticmethod
     def buscar_alumno_documento(nro_documento):
         """Obtiene un alumno por su número de documento"""
-        return Alumno.query.filter_by(nroDocumento=nro_documento).first()
+        return Alumno.query.filter_by(nro_documento=nro_documento).first()
     
     @staticmethod
     def actualizar_alumno(alumno):
