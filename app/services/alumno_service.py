@@ -75,7 +75,7 @@ class AlumnoService:
         :param alumno_id: ID del alumno a eliminar.
         :return: Objeto Alumno eliminado o None si no se encuentra.
         """
-        return AlumnoRepository.borrar_alumno_id(alumno_id)        return AlumnoRepository.borrar_alumno_id(alumno_id)
+        return AlumnoRepository.borrar_alumno_id(alumno_id)
 =======
         """Elimina un alumno por su ID"""
         return AlumnoRepository.borrar_alumno_id(alumno_id)
