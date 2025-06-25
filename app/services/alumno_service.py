@@ -69,14 +69,6 @@ class AlumnoService:
     
     @staticmethod
     def borrar_alumno_id(alumno_id):
-<<<<<<< Updated upstream
-        """
-        Elimina un alumno por su ID
-        :param alumno_id: ID del alumno a eliminar.
-        :return: Objeto Alumno eliminado o None si no se encuentra.
-        """
-        return AlumnoRepository.borrar_alumno_id(alumno_id)
-=======
         """Elimina un alumno por su ID"""
         return AlumnoRepository.borrar_alumno_id(alumno_id)
     
@@ -176,4 +168,3 @@ class AlumnoService:
         os.unlink(temp_path)
         docx_io.seek(0)
         return docx_io
->>>>>>> Stashed changes
