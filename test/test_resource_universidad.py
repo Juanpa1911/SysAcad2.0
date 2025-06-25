@@ -19,6 +19,7 @@ class resourceUniversidadTestCase(unittest.TestCase):
 
     def test_obtener_todos(self):
         client = self.app.test_client(use_cookies=True)
+        #TODO: arreglar esto no se como va bien
         #universidad1 = nuevauniversidad()
         #universidad2 = nuevauniversidad()
         #(acá hay que ingeniarselas para importar el método nuevauniversidad del test_universidad.py)

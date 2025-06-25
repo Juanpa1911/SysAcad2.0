@@ -24,8 +24,10 @@ def create_app() -> Flask:
     migrate.init_app(app, db)
     ma.init_app(app)
 
-    from app.resources import home
+    from app.resources import home, certificado_bp
     app.register_blueprint(home, url_prefix= '/api/v1')
+    app.register_blueprint(certificado_bp, url_prefix= '/api/v1')
+
     from app.resources import universidad_bp
     app.register_blueprint(universidad_bp, url_prefix='/api/v1/universidad')
 
