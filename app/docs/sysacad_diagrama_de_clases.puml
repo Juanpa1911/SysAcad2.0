@@ -121,13 +121,13 @@ package "Sistema Académico"{
 
     usuario -- Alumno
     Orientacion -- Especialidad
+    Especialidad -- TipoEspecialidad
     Orientacion -- Plan
     Orientacion -- Materia
     Autoridad -- Materia
-    Especialidad -- TipoEspecialidad
-    Facultad <-- Autoridad
     Facultad -- Universidad
-    Autoridad -- Cargo
+    Facultad <-- Autoridad
+    Cargo -- Autoridad
     Cargo -- CategoriaCargo
     Cargo -- TipoDedicacion
 }
