@@ -3,6 +3,7 @@ from flask import current_app
 from app import create_app
 from app.models import Universidad
 from app.services import UniversidadService
+from app.models import Facultad
 from app import db
 import os
 
@@ -35,6 +36,7 @@ class UniversidadTestCase(unittest.TestCase):
         self.assertIsNotNone(universidad.id)
         self.assertGreaterEqual(universidad.id, 1)
         self.assertEqual(universidad.nombre, "Universidad Nacional de La Plata")
+        self.assertEqual(universidad.facultades.count(), 2)  # Verifica que haya 2 facultades asociadas
         
     def test_universidad_busqueda(self):
         universidad = self.__nuevaUniversidad()
@@ -72,7 +74,27 @@ class UniversidadTestCase(unittest.TestCase):
         universidad=Universidad()
         universidad.nombre = "Universidad Nacional de La Plata"
         universidad.sigla = "UNLP"
+       
+        facultad1 = self.__nuevafacultad()
+        facultad2 = self.__nuevafacultad2()
+        
+        universidad.asociar_facultad(facultad1)
+        universidad.asociar_facultad(facultad2)
+        
         return universidad
+    
+    
+    def __nuevafacultad(self):
+        facultad = Facultad()
+        facultad.nombre = "Facultad de Ingenieria"
+        facultad.abreviatura = "FI" #TODO # Valor obligatorio
+        return facultad
+
+    def __nuevafacultad2(self):
+        facultad = Facultad()
+        facultad.nombre = "Facultad de Ciencias Exactas"
+        facultad.abreviatura = "FCE"  # Valor obligatorio
+        return facultad
     
 if __name__ == '__main__':
     unittest.main()
