@@ -7,18 +7,38 @@ class MateriaService:
     """
     @staticmethod
     def crear_materia(materia: Materia):
+        """
+        Crea una nueva materia en la base de datos.
+        :param materia: Objeto Materia a crear.
+        :return: Objeto Materia creado.
+        """
         MateriaRepository.crear(materia)
     
     @staticmethod
     def buscar_por_id(id: int) -> Materia:
+        """
+        Busca una materia por su ID.
+        :param id: ID de la materia a buscar.
+        :return: Objeto Materia encontrado o None si no se encuentra.
+        """
         return MateriaRepository.buscar_por_id(id)
     
     @staticmethod
     def buscar_todos() -> list[Materia]:
+        """
+        Busca todas las materias en la base de datos.
+        :return: Lista de objetos Materia. 
+        """
         return MateriaRepository.buscar_todos()
     
     @staticmethod
     def actualizar_materia(id: int, materia: Materia) -> Materia:
+        """
+        Actualiza una materia existente en la base de datos.
+        :param id: ID de la materia a actualizar.
+        :param materia: Objeto Materia con los nuevos datos.
+        :return: Objeto Materia actualizado o None si no se encuentra.
+        """
         materia_existente = MateriaRepository.buscar_por_id(id)
         if not materia_existente:
             return None
@@ -29,6 +49,11 @@ class MateriaService:
     
     @staticmethod
     def borrar_por_id(id: int) -> Materia:
+        """
+        Borra una materia por su ID.
+        :param id: ID de la materia a borrar.
+        :return: Objeto Materia borrado o None si no se encuentra.
+        """
         materia = MateriaRepository.borrar_por_id(id)
         if not materia:
             return None

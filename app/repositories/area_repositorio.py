@@ -10,6 +10,7 @@ class AreaRepository:
     def crear(area):
         db.session.add(area)
         db.session.commit()
+        return area
         
     @staticmethod
     def buscar_por_id(id: int):
