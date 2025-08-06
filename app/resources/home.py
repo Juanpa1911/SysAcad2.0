@@ -1,8 +1,8 @@
 from flask import jsonify, Blueprint
 
-home = Blueprint('home', __name__)
+home_bp = Blueprint('home', __name__)
 
-@home.route('/', methods=['GET'])
+@home_bp.route('/', methods=['GET'])
 def index():
     resp = jsonify("OK")
     resp.status_code

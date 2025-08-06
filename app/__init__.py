@@ -23,14 +23,14 @@ def create_app() -> Flask:
     db.init_app(app)
     migrate.init_app(app, db)
     ma.init_app(app)
-
-    from app.resources import home, certificado_bp
-    app.register_blueprint(home, url_prefix= '/api/v1')
-    app.register_blueprint(certificado_bp, url_prefix= '/api/v1')
-
-    from app.resources import universidad_bp
-    app.register_blueprint(universidad_bp, url_prefix='/api/v1/universidad')
-
+    
+    
+    from app.resources import home_bp, universidad_bp#,  certificado_bp 
+    app.register_blueprint(home_bp, url_prefix= '/api/v1')
+    app.register_blueprint(universidad_bp, url_prefix= '/api/v1/universidad')
+    #app.register_blueprint(certificado_bp, url_prefix= '/api/v1/certificado')
+    
+   
     @app.shell_context_processor    
     def ctx():
         return {"app": app}
