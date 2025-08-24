@@ -1,19 +1,42 @@
-# SYSACAD
+# SYSACAD 2.0 - Desarrollo de Software
 ## Integrantes
 - López Laszuk Juan Pablo
 - Piastrellini Mariano
-- Buttinni Cristobal
+- Buttini Cristobal
 - Sosa Ricardo
 - Iriarte López Ana Valentina
 - Moya Carlos
+
+SYSACAD 2.0 es un sistema académico desarrollado en Python, diseñado bajo una arquitectura en capas y con un enfoque de desarrollo guiado por pruebas (TDD).
+
+> ⚡ La arquitectura de SYSACAD 2.0 está estructurada en múltiples capas y módulos especializados, que garantizan la separación de responsabilidades:
+models - repositories - services - mapping - resources - tests
+
 ---
 
-# Cómo ejecutar los test
+## 📂 Descripcion Modulos Principales del proyecto 
+
+```
+SYSACAD 2.0/
+├── models/             # Definiciones de tablas como objetos usando a SQLALCHEMY (ORM)
+├── repositories/       # Acceso y persistencia en BD (SQLAlchemy)
+├── services/           # Lógica de negocio 
+├── test/               # Pruebas unitarias (verifican solo la conexion con service)
+├── mapping/            # Serialización, deserialización y validación de datos
+├── resources/          # Recursos REST que exponen la API (Solicitudes HTTP)
+├── db/                 # Configuración de sesión SQLAlchemy
+├── config/             # Lectura de variables de entorno (.env)
+├── .env                # Variables de entorno. Contiene la URI de conexión a PostgreSQL
+├── requirements.txt    # Dependencias necesarias
+└── README.md           # Documentacion principal 
+```
+
+# Guia para la ejecucion de los TEST
 Para testear las clases es necesario contar con una base de datos en la cual se pueda realizar los testeos.
 Se va a usar PostgreSQL para la base de datos y vamos a crear un contenedor en Docker Desktop.
 
 ---
-## paso 1
+## Paso 1
 En el repositorio crear un archivo `.env` en el cual van a poner esto:
 ```env
 SQLALCHEMY_TRACK_MODIFICATIONS = False
