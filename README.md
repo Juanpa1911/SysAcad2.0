@@ -13,6 +13,27 @@ SYSACAD 2.0 es un sistema académico desarrollado en Python, diseñado bajo una 
 models - repositories - services - mapping - resources - tests
 
 ---
+## Requerimientos
+- Docker Dekstop
+- PlantUML
+- POSTMAN
+- PostgreSQL 14.17-bookworm
+- Python 3.15.5
+- Flask==3.1.0
+- Flask-SQLAlchemy==3.1.1
+- SQLAlchemy==2.0.40
+- psycopg2==2.9.10
+- psycopg[binary]
+- python-dotenv==1.1.0
+- Flask-Migrate==4.1.0
+- flask-marshmallow==1.3.0
+- marshmallow==4.0.0
+- weasyprint==65.1
+- python-odt-template==0.5.1
+- docxtpl==0.20.0
+- markupsafe== 3.0.2
+
+---
 
 ## 📂 Descripcion Modulos Principales del proyecto 
 
@@ -125,7 +146,7 @@ networks:
 
 ---
 ## Paso 3
-Ahora en docker abren la terminal y se mueven a la carpeta de la carpeta postgresql que usamos recien y dentro la carpeta usan los comandos
+Ahora en docker abren la terminal y se mueven dentro de la carpeta PostgreSQL que clonamos en el paso anterior y dentro la carpeta usan los comandos:
 ```bash
 # Ir a la carpeta del repositorio
 cd "ruta/del/repositorio"
