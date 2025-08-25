@@ -6,6 +6,7 @@
 - Sosa Ricardo
 - Iriarte López Ana Valentina
 - Moya Carlos
+- Github Copilot
 
 SYSACAD 2.0 es un sistema académico desarrollado en Python. Diseñado bajo una arquitectura en capas, con un enfoque de desarrollo guiado por pruebas (TDD).
 
@@ -13,7 +14,7 @@ SYSACAD 2.0 es un sistema académico desarrollado en Python. Diseñado bajo una 
 models - repositories - services - mapping - resources - tests
 
 ---
-## Requerimientos
+## Requerimientos (hasta ahora)
 - Docker Dekstop
 - PlantUML
 - POSTMAN
@@ -203,4 +204,5 @@ En una nueva terminal ejecutar los siguiente comandos:
   
 4. **Ejecucion de la Aplicacion**
    ➜ `python app.py `
+   
 
