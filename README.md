@@ -52,7 +52,7 @@ SYSACAD 2.0/
 └── README.md           # Documentacion principal 
 ```
 
-# Guia para la ejecucion de los TEST
+## Guia para la ejecucion de los TEST
 Para testear las clases es necesario contar con una base de datos en la cual se pueda realizar los testeos.
 Se va a utilizar PostgreSQL para la base de datos y se creará un contenedor en Docker Desktop.
 
@@ -183,4 +183,24 @@ Ahora la base de datos esta lista para realizar los testeos de las clases!
 
 ![image](https://github.com/user-attachments/assets/182c766c-366b-4777-b88f-0746058085ec)
 
+---
+
+## Pasos para la ejecución de la aplicacion
+Para garantizar una correcta inicialización del proyecto, se recomienda seguir el siguiente procedimiento.
+
+En una nueva terminal ejecutar los siguiente comandos:
+
+1. **Crear el entorno virtual en la carpeta raiz del proyecto**  
+   ➜ `python -m venv venv`
+
+2. **Activar el entorno virtual (necesario para instalar las librerias de requirements.txt )**  
+   ➜ `.\venv\Scripts\Activate.ps1`
+
+3. **Instalar las librerías y dependencias especificadas en requirements.txt**  
+   ➜ `pip install -r requirements.txt`
+
+  Una vez instaladas correctamente todas las librerias y dependencias especificadas en el archivo requirements.txt se puede proceder con la ejecucion de la aplicacion
+  
+4. **Ejecucion de la Aplicacion**
+   ➜ `python app.py `
 
