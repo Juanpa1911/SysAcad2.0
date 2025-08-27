@@ -21,6 +21,7 @@ class DepartamentoRepository:
     @staticmethod
     def actualizar_departamento(departamento) -> Departamento:
         departamento_existente = db.session.merge(departamento)
+        db.session.commit()
         if not departamento_existente:
             return None
         return departamento_existente

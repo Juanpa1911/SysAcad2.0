@@ -10,10 +10,6 @@ marshmallow==4.0.0
 weasyprint==65.1
 python-odt-template==0.5.1
 docxtpl==0.20.0
-<<<<<<< Updated upstream
-markupsafe== 3.0.2
-=======
 markupsafe== 3.0.2
 Flask-hashids == 1.0.3
 sqlalchemy-filters==0.13.0
->>>>>>> Stashed changes
