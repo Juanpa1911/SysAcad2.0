@@ -24,7 +24,7 @@ class DepartamentoService:
             return None
         departamento_existente.nombre = departamento.nombre
         departamento_existente.descripcion = departamento.descripcion
-        return departamento_existente
+        return DepartamentoRepository.actualizar_departamento(departamento_existente)
     
     @staticmethod
     def borrar_por_id(id: int) -> Departamento:

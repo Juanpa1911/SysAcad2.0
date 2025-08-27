@@ -20,11 +20,9 @@ class DepartamentoRepository:
     
     @staticmethod
     def actualizar_departamento(departamento) -> Departamento:
-        departamento_existente = db.session.merge(departamento)
+        db.session.merge(departamento)
         db.session.commit()
-        if not departamento_existente:
-            return None
-        return departamento_existente
+        return departamento
     
     @staticmethod
     def borrar_por_id(id: int) -> Departamento:
