@@ -23,7 +23,7 @@ class AutoridadTestCase(unittest.TestCase):
         tipo_dedicacion = TipoDedicacion()
         cargo.nombre= "Decano"
         cargo.puntos= 100
-        self.__new_object(autoridad, cargo, tipo_dedicacion)
+        self.__nueva_autoridad(autoridad, cargo, tipo_dedicacion)
         self.assertIsNotNone(autoridad)
         self.assertEqual(autoridad.nombre, "Juan Perez")
         self.assertIsNotNone(autoridad.cargo)
@@ -33,7 +33,7 @@ class AutoridadTestCase(unittest.TestCase):
         self.assertIsNotNone(autoridad.cargo.categoria_cargo)
         self.assertEqual(autoridad.cargo.categoria_cargo.nombre, "Categoria 1")
 
-    def __new_object(self, autoridad, cargo, tipo_dedicacion):
+    def __nueva_autoridad(self, autoridad, cargo, tipo_dedicacion):
         cargo.categoria_cargo= CategoriaCargo()
         cargo.categoria_cargo.nombre= "Categoria 1"
         cargo.tipo_dedicacion = tipo_dedicacion

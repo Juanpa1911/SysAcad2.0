@@ -1,5 +1,6 @@
 from app import db
 from app.models import Alumno
+from typing import Optional
 
 class AlumnoRepository:
     
@@ -44,3 +45,11 @@ class AlumnoRepository:
             db.session.delete(alumno)
             db.session.commit()
         return True
+    
+    @staticmethod
+    def buscar_con_facultad(id: int) -> Optional[Alumno]:
+        return Alumno.query.options(db.joinedload(Alumno.facultad)).filter_by(id=id).first()
+    
+    @staticmethod
+    def buscar_por_legajo_con_facultad(legajo: str) -> Optional[Alumno]:
+        return Alumno.query.options(db.joinedload(Alumno.facultad)).filter_by(legajo=legajo).first()
