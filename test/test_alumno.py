@@ -34,6 +34,16 @@ class AlumnoTestCase(unittest.TestCase):
             fecha_ingreso=date.today()
         )
     
+    def test_alumno_creation(self):
+        alumno = self.__nuevoAlumno()
+        self.assertIsNotNone(alumno)
+        self.assertEqual(alumno.apellido, "Pérez")
+        self.assertEqual(alumno.nombre, "Juan")
+        self.assertEqual(alumno.nro_documento, "30123456")
+        self.assertEqual(alumno.tipo_documento.nombre, "DNI")
+        self.assertEqual(alumno.sexo, "M")
+        self.assertEqual(alumno.nro_legajo, 12345)
+    
     def test_crear_alumno(self):
         alumno = self.__nuevoAlumno()
         AlumnoService.crear_alumno(alumno)
