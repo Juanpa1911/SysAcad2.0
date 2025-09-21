@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye
+FROM python:3.13.5
 
 ENV FLASK_CONTEXT=production
 ENV PYTHONUNBUFFERED=1
