@@ -27,8 +27,8 @@ class PlanTestCase(unittest.TestCase):
         plan = self.__nuevoPlan()
         self.assertIsNotNone(plan)
         self.assertEqual(plan.nombre, "Plan 2023")
-        self.assertEqual(plan.fechaInicio, "2023-01-01")
-        self.assertEqual(plan.fechaFin, "2027-12-31")
+        self.assertEqual(plan.fecha_inicio, "2023-01-01")
+        self.assertEqual(plan.fecha_fin, "2027-12-31")
         self.assertEqual(plan.observacion, "Plan de estudios actualizado")
 
     def test_crear_plan(self):
@@ -91,8 +91,8 @@ class PlanTestCase(unittest.TestCase):
     def __nuevoPlan(self, nombre="Plan 2023"):
         plan = Plan()
         plan.nombre = nombre
-        plan.fechaInicio = "2023-01-01"
-        plan.fechaFin = "2027-12-31"
+        plan.fecha_inicio = "2023-01-01"
+        plan.fecha_fin = "2027-12-31"
         plan.observacion = "Plan de estudios actualizado"
         return plan
 
