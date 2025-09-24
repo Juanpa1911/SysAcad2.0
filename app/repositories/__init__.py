@@ -13,3 +13,4 @@ from .plan_repositorio import PlanRepository
 from .especialidad_repositorio import EspecialidadRepository
 from .cargo_repositorio import CargoRepository
 from .alumno_repositorio import AlumnoRepository
+from .autoridad_repositorio import AutoridadRepository
