@@ -6,6 +6,7 @@ from app.models.autoridad import Autoridad
 from app.models.cargo import Cargo
 from app.models.categoria_cargo import CategoriaCargo
 from app.models.tipo_dedicacion import TipoDedicacion
+from app.services import AutoridadService
 
 class AutoridadTestCase(unittest.TestCase):
     def setUp(self):
@@ -32,6 +33,72 @@ class AutoridadTestCase(unittest.TestCase):
         self.assertEqual(autoridad.email, "abc@gmail.com")
         self.assertIsNotNone(autoridad.cargo.categoria_cargo)
         self.assertEqual(autoridad.cargo.categoria_cargo.nombre, "Categoria 1")
+
+    def test_crear_autoridad(self):
+        autoridad = Autoridad()
+        cargo = Cargo()
+        tipo_dedicacion = TipoDedicacion()
+        cargo.nombre= "Decano"
+        cargo.puntos= 100
+        self.__new_object(autoridad, cargo, tipo_dedicacion)
+        self.assertIsNotNone(AutoridadService.crear_autoridad(autoridad))
+        self.assertEqual(autoridad.nombre, "Juan Perez")
+        self.assertIsNotNone(autoridad.cargo)
+        self.assertEqual(autoridad.cargo.nombre, "Decano")
+        self.assertEqual(autoridad.telefono, "123456789")
+        self.assertEqual(autoridad.email, "abc@gmail.com")
+        self.assertIsNotNone(autoridad.cargo.categoria_cargo)
+
+    def test_obtener_autoridad_por_id(self):
+        autoridad = Autoridad()
+        cargo = Cargo()
+        tipo_dedicacion = TipoDedicacion()
+        cargo.nombre= "Decano"
+        cargo.puntos= 100
+        self.__new_object(autoridad, cargo, tipo_dedicacion)
+        AutoridadService.crear_autoridad(autoridad)
+        autoridad_encontrada = AutoridadService.obtener_autoridad_por_id(autoridad.id)
+        self.assertIsNotNone(autoridad_encontrada)
+        self.assertEqual(autoridad_encontrada.nombre, "Juan Perez")
+
+    def test_obtener_todas_las_autoridades(self):
+        autoridad = Autoridad()
+        cargo = Cargo()
+        tipo_dedicacion = TipoDedicacion()
+        cargo.nombre= "Decano"
+        cargo.puntos= 100
+        self.__new_object(autoridad, cargo, tipo_dedicacion)
+        AutoridadService.crear_autoridad(autoridad)
+        autoridades = AutoridadService.obtener_todas_las_autoridades()
+        self.assertIsInstance(autoridades, list)
+        self.assertGreaterEqual(len(autoridades), 1)
+
+    def test_actualizar_autoridad(self):
+        autoridad = Autoridad()
+        cargo = Cargo()
+        tipo_dedicacion = TipoDedicacion()
+        cargo.nombre= "Decano"
+        cargo.puntos= 100
+        self.__new_object(autoridad, cargo, tipo_dedicacion)
+        AutoridadService.crear_autoridad(autoridad)
+        autoridad.nombre = "Pedro Gomez"
+        autoridad_actualizada = AutoridadService.actualizar_autoridad(autoridad.id, autoridad)
+        self.assertIsNotNone(autoridad_actualizada)
+        self.assertEqual(autoridad_actualizada.nombre, "Pedro Gomez")
+
+    def test_borrar_autoridad_por_id(self):
+        autoridad = Autoridad()
+        cargo = Cargo()
+        tipo_dedicacion = TipoDedicacion()
+        cargo.nombre= "Decano"
+        cargo.puntos= 100
+        self.__new_object(autoridad, cargo, tipo_dedicacion)
+        AutoridadService.crear_autoridad(autoridad)
+        autoridad_borrada = AutoridadService.borrar_autoridad_por_id(autoridad.id)
+        self.assertIsNotNone(autoridad_borrada)
+        self.assertEqual(autoridad_borrada.id, autoridad.id)
+        autoridad_no_encontrada = AutoridadService.obtener_autoridad_por_id(autoridad.id)
+        self.assertIsNone(autoridad_no_encontrada)
 
     def __new_object(self, autoridad, cargo, tipo_dedicacion):
         cargo.categoria_cargo= CategoriaCargo()

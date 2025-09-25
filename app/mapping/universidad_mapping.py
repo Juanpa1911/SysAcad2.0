@@ -1,6 +1,5 @@
 from marshmallow import Schema, fields, post_load, validate
 from app.models import Universidad
-from markupsafe import escape
 
 class UniversidadMapping(Schema):
     id = fields.Integer(dump_only=True)

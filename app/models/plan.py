@@ -13,7 +13,7 @@ class Plan(db.Model):
     fecha_fin: datetime = db.Column(db.DateTime, nullable=True)
 
     observacion: str = db.Column(db.String(255), nullable=True)
-    orientacion_id: int = db.Column(db.Integer, db.ForeignKey('orientaciones.id'), nullable=False)
+    orientacion_id: int = db.Column(db.Integer, db.ForeignKey('orientaciones.id'), nullable=True)
     orientacion = db.relationship('Orientacion')
 
     def validar_fechas(self):

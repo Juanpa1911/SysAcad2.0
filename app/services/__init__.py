@@ -13,3 +13,4 @@ from .especialidad_service import EspecialidadService
 from .cargo_service import CargoService
 from .alumno_service import AlumnoService
 from .universidad_service import UniversidadService
+from .autoridad_service import AutoridadService

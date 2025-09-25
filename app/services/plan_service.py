@@ -41,8 +41,8 @@ class PlanService:
             return None
 
         plan_existente.nombre = plan.nombre
-        plan_existente.fechaInicio = plan.fechaInicio
-        plan_existente.fechaFin = plan.fechaFin
+        plan_existente.fecha_inicio = plan.fecha_inicio
+        plan_existente.fecha_fin = plan.fecha_fin
         plan_existente.observacion = plan.observacion
         plan_existente.orientacion_id = plan.orientacion_id
 
