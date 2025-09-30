@@ -4,21 +4,11 @@ from flask import current_app
 from app import create_app, db
 from app.services.cargo_service import CargoService
 from app.models import Cargo, CategoriaCargo, TipoDedicacion
-from test.metodosDePrueba import nuevoCargo, nuevoCargo2, nuevoCargo3, categoriaCargo, categoriaCargo2, categoriaCargo3, tipoDeCargo, tipoDeCargo2
+from test.base_test import BaseTestCase
+from test.instancias import nuevoCargo, nuevoCargo2, nuevaCategoriaCargo, nuevoTipoDedicacion
 
 
-class CargoTestCase(unittest.TestCase):
-    def setUp(self):
-        os.environ['FLASK_CONTEXT'] = 'testing'
-        self.app = create_app()
-        self.app_context = self.app.app_context()
-        self.app_context.push()
-        db.create_all()
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
-        self.app_context.pop()
+class CargoTestCase(BaseTestCase):
 
     def test_crear_cargo(self):
         cargo = nuevoCargo()
@@ -26,7 +16,7 @@ class CargoTestCase(unittest.TestCase):
         self.__assertCargo(cargo, cargo)  # Compara consigo mismo
 
     def test_buscar_por_id(self):
-        cargo_original = nuevoCargo3()
+        cargo_original = nuevoCargo()
         CargoService.crear_cargo(cargo_original)
         encontrado = CargoService.buscar_por_id(cargo_original.id)
         # Compara con el original
@@ -34,7 +24,7 @@ class CargoTestCase(unittest.TestCase):
 
     def test_buscar_todos(self):
         cargo1 = nuevoCargo()
-        cargo2 = nuevoCargo2()
+        cargo2 = nuevoCargo("Vicedecano", 80)
         CargoService.crear_cargo(cargo1)
         CargoService.crear_cargo(cargo2)
         cargos = CargoService.buscar_todos()
@@ -70,11 +60,8 @@ class CargoTestCase(unittest.TestCase):
         if cargo_original:
             self.assertEqual(cargo.nombre, cargo_original.nombre)
             self.assertEqual(cargo.puntos, cargo_original.puntos)
-            self.assertEqual(cargo.categoria_cargo.nombre,
-                             cargo_original.categoria_cargo.nombre)
-            self.assertEqual(cargo.tipo_dedicacion.nombre,
-                             cargo_original.tipo_dedicacion.nombre)
-
+            self.assertEqual(cargo.categoria_cargo.nombre, cargo_original.categoria_cargo.nombre)
+            self.assertEqual(cargo.tipo_dedicacion.nombre, cargo_original.tipo_dedicacion.nombre)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,38 +1,29 @@
-import unittest
 import os
+import unittest
 from flask import current_app
+from app import db
+from datetime import date
 from app import create_app
 from app.models.plan import Plan
 from app.models.orientacion import Orientacion
 from app.services.plan_service import PlanService
 from app.services.orientacion_service import OrientacionService
-from app import db
+from test.base_test import BaseTestCase
+from test.instancias import nuevoPlan, nuevaOrientacion
 
 
-class PlanTestCase(unittest.TestCase):
-
-    def setUp(self):
-        os.environ['FLASK_CONTEXT'] = 'testing'
-        self.app = create_app()
-        self.app_context = self.app.app_context()
-        self.app_context.push()
-        db.create_all()
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
-        self.app_context.pop()
+class PlanTestCase(BaseTestCase):
 
     def test_plan_creation(self):
-        plan = self.__nuevoPlan()
+        plan = nuevoPlan()
         self.assertIsNotNone(plan)
         self.assertEqual(plan.nombre, "Plan 2023")
-        self.assertEqual(plan.fecha_inicio, "2023-01-01")
-        self.assertEqual(plan.fecha_fin, "2027-12-31")
-        self.assertEqual(plan.observacion, "Plan de estudios actualizado")
+        self.assertEqual(plan.fecha_inicio, date(2023, 1, 1))
+        self.assertEqual(plan.fecha_fin, date(2028, 12, 31))
+        self.assertEqual(plan.observacion, "Plan de estudios 2023")
 
     def test_crear_plan(self):
-        plan = self.__nuevoPlan()
+        plan = nuevoPlan()
         PlanService.crear_plan(plan)
         self.assertIsNotNone(plan)
         self.assertIsNotNone(plan.id)
@@ -40,15 +31,15 @@ class PlanTestCase(unittest.TestCase):
         self.assertEqual(plan.nombre, "Plan 2023")
 
     def test_plan_busqueda(self):
-        plan = self.__nuevoPlan()
+        plan = nuevoPlan()
         PlanService.crear_plan(plan)
         plan_encontrado = PlanService.buscar_por_id(plan.id)
         self.assertIsNotNone(plan_encontrado)
         self.assertEqual(plan_encontrado.nombre, "Plan 2023")
 
     def test_buscar_planes(self):
-        plan1 = self.__nuevoPlan()
-        plan2 = self.__nuevoPlan("Plan 2024")
+        plan1 = nuevoPlan()
+        plan2 = nuevoPlan("Plan 2024")
         PlanService.crear_plan(plan1)
         PlanService.crear_plan(plan2)
         planes = PlanService.buscar_todos()
@@ -56,17 +47,16 @@ class PlanTestCase(unittest.TestCase):
         self.assertEqual(len(planes), 2)
 
     def test_actualizar_plan(self):
-        plan = self.__nuevoPlan()
+        plan = nuevoPlan()
         PlanService.crear_plan(plan)
         plan.nombre = "Plan Modificado"
         plan.observacion = "Observación actualizada"
         plan_actualizado = PlanService.actualizar_plan(plan.id, plan)
         self.assertEqual(plan_actualizado.nombre, "Plan Modificado")
-        self.assertEqual(plan_actualizado.observacion,
-                         "Observación actualizada")
+        self.assertEqual(plan_actualizado.observacion, "Observación actualizada")
 
     def test_borrar_plan(self):
-        plan = self.__nuevoPlan()
+        plan = nuevoPlan()
         PlanService.crear_plan(plan)
         resultado = PlanService.borrar_por_id(plan.id)
         self.assertIsNotNone(resultado)
@@ -80,22 +70,13 @@ class PlanTestCase(unittest.TestCase):
         OrientacionService.crear_orientacion(orientacion)
 
         # Crear un plan asociado a la orientación
-        plan = self.__nuevoPlan()
+        plan = nuevoPlan()
         plan.orientacion_id = orientacion.id
         PlanService.crear_plan(plan)
 
         # Verificar que la relación se guardó correctamente
         plan_encontrado = PlanService.buscar_por_id(plan.id)
         self.assertEqual(plan_encontrado.orientacion_id, orientacion.id)
-
-    def __nuevoPlan(self, nombre="Plan 2023"):
-        plan = Plan()
-        plan.nombre = nombre
-        plan.fecha_inicio = "2023-01-01"
-        plan.fecha_fin = "2027-12-31"
-        plan.observacion = "Plan de estudios actualizado"
-        return plan
-
 
 if __name__ == "__main__":
     unittest.main()

@@ -1,23 +1,13 @@
+import os
 import unittest
 from flask import current_app
 from app import create_app
 from app.models import CategoriaCargo
 from app.services import CategoriaCargoService
 from app import db
-import os
+from test.base_test import BaseTestCase
 
-class CategoriaCargoTestCase(unittest.TestCase):
-    def setUp(self):
-        os.environ['FLASK_CONTEXT'] = 'testing'
-        self.app = create_app()
-        self.app_context = self.app.app_context()
-        self.app_context.push()
-        db.create_all()
-        
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
-        self.app_context.pop()
+class CategoriaCargoTestCase(BaseTestCase):
         
     def test_categoriacargo_creation(self):
         categoria_cargo = self.__nuevaCategoriaCargo()

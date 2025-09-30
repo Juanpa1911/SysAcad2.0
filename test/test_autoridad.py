@@ -7,32 +7,9 @@ from app.models.cargo import Cargo
 from app.models.categoria_cargo import CategoriaCargo
 from app.models.tipo_dedicacion import TipoDedicacion
 from app.services import AutoridadService
+from test.base_test import BaseTestCase
 
-class AutoridadTestCase(unittest.TestCase):
-    def setUp(self):
-        os.environ['FLASK_CONTEXT'] = 'testing'
-        self.app = create_app()
-        self.app_context = self.app.app_context()
-        self.app_context.push()
-                
-    def tearDown(self):
-        self.app_context.pop()
-        
-    def test_autoridad_creation(self):
-        autoridad = Autoridad()
-        cargo = Cargo()
-        tipo_dedicacion = TipoDedicacion()
-        cargo.nombre= "Decano"
-        cargo.puntos= 100
-        self.__new_object(autoridad, cargo, tipo_dedicacion)
-        self.assertIsNotNone(autoridad)
-        self.assertEqual(autoridad.nombre, "Juan Perez")
-        self.assertIsNotNone(autoridad.cargo)
-        self.assertEqual(autoridad.cargo.nombre, "Decano")
-        self.assertEqual(autoridad.telefono, "123456789")
-        self.assertEqual(autoridad.email, "abc@gmail.com")
-        self.assertIsNotNone(autoridad.cargo.categoria_cargo)
-        self.assertEqual(autoridad.cargo.categoria_cargo.nombre, "Categoria 1")
+class AutoridadTestCase(BaseTestCase):
 
     def test_crear_autoridad(self):
         autoridad = Autoridad()
@@ -48,6 +25,7 @@ class AutoridadTestCase(unittest.TestCase):
         self.assertEqual(autoridad.telefono, "123456789")
         self.assertEqual(autoridad.email, "abc@gmail.com")
         self.assertIsNotNone(autoridad.cargo.categoria_cargo)
+        self.assertEqual(autoridad.cargo.categoria_cargo.nombre, "Categoria 1")
 
     def test_obtener_autoridad_por_id(self):
         autoridad = Autoridad()

@@ -4,7 +4,9 @@ from flask import current_app
 from app import create_app, db
 from app.models.departamento import Departamento
 from app.services.departamento_service import DepartamentoService
-from test.metodosDePrueba import nuevoDepartamento, nuevoDepartamento2
+from test.instancias import nuevoDepartamento, nuevoDepartamento2
+from test.base_test import BaseTestCase
+
 class AppTestCase(unittest.TestCase):
 
     def setUp(self):
@@ -22,13 +24,13 @@ class AppTestCase(unittest.TestCase):
     def test_crear_departamento(self):
         departamento = nuevoDepartamento()
         DepartamentoService.crear_departamento(departamento)
-        self._assert_departamento(departamento, "ofina de alumnos", "oficina de alumnos de la facultad de ingenieria")
+        self._assert_departamento(departamento, "Departamento de Sistemas", "Departamento de estudiantes de ingeniería en sistemas")
         
     def test_buscar_por_id(self):
         departamento = nuevoDepartamento()
         DepartamentoService.crear_departamento(departamento)
         encontrado = DepartamentoService.buscar_por_id(departamento.id)
-        self._assert_departamento(encontrado, "ofina de alumnos", "oficina de alumnos de la facultad de ingenieria")
+        self._assert_departamento(encontrado, "Departamento de Sistemas", "Departamento de estudiantes de ingeniería en sistemas")
 
     def test_buscar_todos(self):
         departamento1 = nuevoDepartamento()
@@ -63,5 +65,6 @@ class AppTestCase(unittest.TestCase):
         self.assertGreaterEqual(departamento.id, 1)
         self.assertEqual(departamento.nombre, nombre)
         self.assertEqual(departamento.descripcion, descripcion)
+        
 if __name__ == '__main__':
     unittest.main()

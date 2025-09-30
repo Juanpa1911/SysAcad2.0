@@ -40,13 +40,12 @@ class UniversidadRepository:
         :param universidad: Objeto Universidad con los nuevos datos.
         :return: Objeto Universidad actualizado o None si no se encuentra.
         """
-        universidad_existente = db.session.merge(universidad)
-        if not universidad_existente:
-            return None
-        return universidad_existente
+        db.session.merge(universidad)
+        db.session.commit()
+        return universidad
 
     @staticmethod
-    def borrar_universidad(id: int) -> Universidad:
+    def borrar_universidad(id: int) -> bool:
         """
         Borra una universidad por su ID.
         :param id: ID de la universidad a borrar.
@@ -54,7 +53,7 @@ class UniversidadRepository:
         """
         universidad = db.session.query(Universidad).filter_by(id=id).first()
         if not universidad:
-            return None
+            return False
         db.session.delete(universidad)
         db.session.commit()
-        return False
+        return True

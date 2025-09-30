@@ -16,7 +16,7 @@ class UniversidadService:
         return UniversidadRepository.crear_universidad(universidad)
     
     @staticmethod
-    def buscar_por_id(id: int) -> Universidad:
+    def buscar_por_id(id: int) -> Universidad | None:
         """
         Busca una universidad por su ID.
         :param id: ID de la universidad a buscar.
@@ -33,7 +33,7 @@ class UniversidadService:
         return UniversidadRepository.buscar_todos()
     
     @staticmethod
-    def actualizar_universidad(id: int, universidad: Universidad) -> Universidad:
+    def actualizar_universidad(id: int, universidad: Universidad) -> Universidad | None:
         """
         Actualiza una universidad existente en la base de datos.
         :param id: ID de la universidad a actualizar.
@@ -45,7 +45,7 @@ class UniversidadService:
             return None
         universidad_existente.nombre = universidad.nombre
         universidad_existente.sigla = universidad.sigla
-        return universidad_existente
+        return UniversidadRepository.actualizar_universidad(universidad_existente)
     
     @staticmethod
     def borrar_por_id(id: int) -> bool:
@@ -54,7 +54,4 @@ class UniversidadService:
         :param id: ID de la universidad a borrar.
         :return: True si se borró correctamente, False si no se encontró.
         """
-        universidad = UniversidadRepository.buscar_por_id(id)
-        if not universidad:
-            return None
-        return universidad
+        return UniversidadRepository.borrar_universidad(id)

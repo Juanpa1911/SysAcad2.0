@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from app import db
-from datetime import datetime
+from datetime import date
 
 @dataclass(init=False, repr=True, eq=True)
 class Plan(db.Model):
@@ -9,8 +9,8 @@ class Plan(db.Model):
     nombre: str = db.Column(db.String(100), nullable=False)
 
    #Uso de DateTime en lugar de String
-    fecha_inicio: datetime = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    fecha_fin: datetime = db.Column(db.DateTime, nullable=True)
+    fecha_inicio: date = db.Column(db.Date, nullable=False, default=date.today)
+    fecha_fin: date = db.Column(db.Date, nullable=True)
 
     observacion: str = db.Column(db.String(255), nullable=True)
     orientacion_id: int = db.Column(db.Integer, db.ForeignKey('orientaciones.id'), nullable=True)

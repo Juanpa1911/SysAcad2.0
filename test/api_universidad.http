@@ -1,0 +1,19 @@
+### Variables
+@baseUrl = http://localhost:5000/api/v1
+
+### 1. GET todas las universidades
+GET {{baseUrl}}/universidad
+Accept: application/json
+
+### 2. POST crear universidad
+POST {{baseUrl}}/universidad
+Content-Type: application/json
+
+{
+  "nombre": "Universidad Tecnológica Nacional",
+  "sigla": "UTN"
+}
+
+### 3. GET por ID (cambiar 1 por ID real)
+GET {{baseUrl}}/universidad/1
+Accept: application/json
