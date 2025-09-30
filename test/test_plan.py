@@ -13,15 +13,7 @@ from test.instancias import nuevoPlan, nuevaOrientacion
 
 
 class PlanTestCase(BaseTestCase):
-
-    def test_plan_creation(self):
-        plan = nuevoPlan()
-        self.assertIsNotNone(plan)
-        self.assertEqual(plan.nombre, "Plan 2023")
-        self.assertEqual(plan.fecha_inicio, date(2023, 1, 1))
-        self.assertEqual(plan.fecha_fin, date(2028, 12, 31))
-        self.assertEqual(plan.observacion, "Plan de estudios 2023")
-
+        
     def test_crear_plan(self):
         plan = nuevoPlan()
         PlanService.crear_plan(plan)
@@ -29,6 +21,10 @@ class PlanTestCase(BaseTestCase):
         self.assertIsNotNone(plan.id)
         self.assertGreaterEqual(plan.id, 1)
         self.assertEqual(plan.nombre, "Plan 2023")
+        self.assertEqual(plan.fecha_inicio, date(2023, 1, 1))
+        self.assertEqual(plan.fecha_fin, date(2028, 12, 31))
+        self.assertEqual(plan.observacion, "Plan de estudios 2023")
+
 
     def test_plan_busqueda(self):
         plan = nuevoPlan()

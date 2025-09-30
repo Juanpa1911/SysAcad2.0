@@ -10,12 +10,6 @@ from test.instancias import nuevoTipoEspecialidad
 
 class TipoEspecialidadTestCase(BaseTestCase):
 
-    def test_tipo_especialidad_creation(self):
-        tipo_especialidad = nuevoTipoEspecialidad()
-        self.assertIsNotNone(tipo_especialidad)
-        self.assertEqual(tipo_especialidad.nombre, "Técnica")
-        self.assertEqual(tipo_especialidad.nivel, "Básico")
-
     def test_crear_tipo_especialidad(self):
         tipo_especialidad = nuevoTipoEspecialidad()
         TipoEspecialidadService.crear_tipo_especialidad(tipo_especialidad)

@@ -8,11 +8,6 @@ from app import db
 from test.base_test import BaseTestCase
 
 class CategoriaCargoTestCase(BaseTestCase):
-        
-    def test_categoriacargo_creation(self):
-        categoria_cargo = self.__nuevaCategoriaCargo()
-        self.assertIsNotNone(categoria_cargo)
-        self.assertEqual(categoria_cargo.nombre, "Categoria 1")
 
     def test_crear_categoria_cargo(self):
         categoria_cargo = self.__nuevaCategoriaCargo()
