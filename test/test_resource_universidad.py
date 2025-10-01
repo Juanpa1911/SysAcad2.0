@@ -5,6 +5,7 @@ from app import db
 from test.instancias import nuevaUniversidad
 import os
 
+
 class resourceUniversidadTestCase(unittest.TestCase):
     def setUp(self):
         os.environ['FLASK_CONTEXT'] = 'testing'
@@ -20,20 +21,19 @@ class resourceUniversidadTestCase(unittest.TestCase):
         self.app_context.pop()
 
     def test_obtener_todos(self):
-        
+
         client = self.app.test_client(use_cookies=True)
-        #TODO: arreglar esto no se como va bien
+        # TODO: arreglar esto no se como va bien
         universidad2 = nuevaUniversidad()
         universidad1 = nuevaUniversidad()
-        #(acá hay que ingeniarselas para importar el método nuevauniversidad del test_universidad.py)
-        response = client.get('http://localhost:5433/api/v1/universidad')
+        # TODO (acá hay que ingeniarselas para importar el método nuevauniversidad del test_universidad.py)
+        response = client.get('/api/v1/universidad')
         self.assertEqual(response.status_code, 200)
         data = response.get_json()
         self.assertIsNotNone(data)
         self.assertIsInstance(data, list)
         self.assertEqual(len(data), 2)
-        
-        # pass
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     unittest.main()
