@@ -5,7 +5,7 @@ from app import create_app, db
 from app.services.cargo_service import CargoService
 from app.models import Cargo, CategoriaCargo, TipoDedicacion
 from test.base_test import BaseTestCase
-from test.instancias import nuevoCargo, nuevoCargo2, nuevaCategoriaCargo, nuevoTipoDedicacion
+from test.instancias import nuevoCargo, nuevaCategoriaCargo, nuevoTipoDedicacion
 
 
 class CargoTestCase(BaseTestCase):
