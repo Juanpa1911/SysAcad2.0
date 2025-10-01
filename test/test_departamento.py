@@ -4,7 +4,7 @@ from flask import current_app
 from app import create_app, db
 from app.models.departamento import Departamento
 from app.services.departamento_service import DepartamentoService
-from test.instancias import nuevoDepartamento, nuevoDepartamento2
+from test.instancias import nuevoDepartamento
 from test.base_test import BaseTestCase
 
 class AppTestCase(unittest.TestCase):
@@ -34,7 +34,7 @@ class AppTestCase(unittest.TestCase):
 
     def test_buscar_todos(self):
         departamento1 = nuevoDepartamento()
-        departamento2 = nuevoDepartamento2()
+        departamento2 = nuevoDepartamento("Departamento de Matemáticas", "Departamento de estudiantes de matemática")
         DepartamentoService.crear_departamento(departamento1)
         DepartamentoService.crear_departamento(departamento2)
         departamentos = DepartamentoService.buscar_todos()

@@ -5,14 +5,14 @@ from app import create_app, db
 from app.models import Materia, Orientacion, Autoridad, Cargo, CategoriaCargo, TipoDedicacion
 from app.services import MateriaService
 from test.base_test import BaseTestCase
-from test.instancias import nuevaMateria, nuevaMateria2
+from test.instancias import nuevaMateria
 
 class AppTestCase(BaseTestCase):
 
     def test_crear_materia(self):
         materia = nuevaMateria()
         MateriaService.crear_materia(materia)
-        self._assert_materia(materia, "Analisis Matematico I", "ANMAT1", "Introducción al Análisis Matemático")
+        self._assert_materia(materia, "Análisis Matemático I", "ANMAT1", "Introducción al Análisis Matemático")
         self.assertIsNotNone(materia.orientacion)
         self.assertIsNotNone(materia.autoridades)
 
@@ -20,7 +20,7 @@ class AppTestCase(BaseTestCase):
         materia = nuevaMateria()
         MateriaService.crear_materia(materia)
         encontrado = MateriaService.buscar_por_id(materia.id)
-        self._assert_materia(encontrado, "Analisis Matematico I", "ANMAT1", "Introducción al Análisis Matemático")
+        self._assert_materia(encontrado, "Análisis Matemático I", "ANMAT1", "Introducción al Análisis Matemático")
         self.assertIsNotNone(encontrado.orientacion)
         self.assertIsNotNone(encontrado.autoridades)
 
@@ -30,7 +30,7 @@ class AppTestCase(BaseTestCase):
         MateriaService.crear_materia(materia1)
         MateriaService.crear_materia(materia2)
         materias = MateriaService.buscar_todos()
-        self._assert_materia(materias[0], "Analisis Matematico I", "ANMAT1", "Introducción al Análisis Matemático")
+        self._assert_materia(materias[0], "Análisis Matemático I", "ANMAT1", "Introducción al Análisis Matemático")
         self._assert_materia(materias[1], "Bases de Datos", "BD1", "Introducción a las Bases de Datos")
         self.assertEqual(len(materias), 2)
         

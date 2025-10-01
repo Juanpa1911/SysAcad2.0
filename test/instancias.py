@@ -48,8 +48,8 @@ def nuevoCargo(nombre = "Decano", puntos = 100, categoria_cargo = None, tipo_ded
     cargo = Cargo()
     cargo.nombre = nombre
     cargo.puntos = puntos
-    cargo.categoria_cargo = categoria_cargo
-    cargo.tipo_dedicacion = tipo_dedicacion
+    cargo.categoria_cargo = nuevaCategoriaCargo() 
+    cargo.tipo_dedicacion = nuevoTipoDedicacion() 
     CargoService.crear_cargo(cargo)
     return cargo
 
@@ -100,12 +100,14 @@ def nuevoGrupo(nombre="Grupo A"):
     GrupoService.crear_grupo(grupo)
     return grupo
 
-def nuevaMateria(nombre="Análisis Matemático I", codigo="ANMAT1", observacion="Introducción al Análisis Matemático"):
+def nuevaMateria(nombre="Análisis Matemático I", codigo="ANMAT1", observacion="Introducción al Análisis Matemático", orientacion=None, autoridad=None):
     materia = Materia()
     materia.nombre = nombre
     materia.codigo = codigo
     materia.observacion = observacion
     MateriaService.crear_materia(materia)
+    materia.orientacion = nuevaOrientacion()
+    materia.autoridades = [nuevaAutoridad("Dr. Carlos Gómez", "987 654321", "dr.carlos.gomez@unlp.edu.ar")]
     return materia
 
 def nuevaOrientacion(nombre="Sistemas de Información"):
@@ -148,7 +150,7 @@ def nuevoAlumno(apellido="Pérez", nombre="Juan", nro_documento="30123456", tipo
     alumno.apellido = apellido
     alumno.nombre = nombre
     alumno.nro_documento = nro_documento
-    alumno.tipo_documento = nuevoTipoDocumento() if tipo_documento is None else tipo_documento
+    alumno.tipo_documento = nuevoTipoDocumento()
     alumno.fecha_nacimiento = fecha_nacimiento
     alumno.sexo = sexo
     alumno.nro_legajo = nro_legajo
