@@ -24,6 +24,8 @@ def create_app() -> Flask:
     app = Flask(__name__)
     f = config.factory(app_context if app_context else 'development')
     app.config.from_object(f)
+    app.config.setdefault('HASHIDS_MIN_LENGTH', 8)
+    app.config.setdefault('HASHIDS_SALT', 'default_salt')
     db.init_app(app)
     migrate.init_app(app, db)
     hashids.init_app(app)
