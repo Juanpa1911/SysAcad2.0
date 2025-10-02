@@ -1,10 +1,10 @@
 from dataclasses import dataclass
 from app import db
 from sqlalchemy import ForeignKey
-
+from flask_hashids import HashidMixin
 
 @dataclass(init=False, repr=True, eq=True)
-class Facultad(db.Model):
+class Facultad(HashidMixin, db.Model):
     __tablename__ = 'facultades'
 
     id: int = db.Column(db.Integer, primary_key=True, autoincrement=True)

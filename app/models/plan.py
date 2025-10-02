@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from app import db
 from datetime import date
+from flask_hashids import HashidMixin
 
 @dataclass(init=False, repr=True, eq=True)
-class Plan(db.Model):
+class Plan(HashidMixin, db.Model):
     __tablename__ = 'planes'
     id: int = db.Column(db.Integer, primary_key=True, autoincrement=True)
     nombre: str = db.Column(db.String(100), nullable=False)

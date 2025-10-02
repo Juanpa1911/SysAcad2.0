@@ -6,7 +6,7 @@ universidad_bp = Blueprint('universidad', __name__)
 universidad_mapping = UniversidadMapping()
 
 @universidad_bp.route('/universidad', methods=['GET'])
-def index():
+def buscar_todos():
     universidades = UniversidadService.buscar_todos()
     return universidad_mapping.dump(universidades, many=True), 200
 
@@ -21,7 +21,7 @@ def buscar_por_id(id):
 def crear_universidad():
     universidad = universidad_mapping.load(request.get_json())
     UniversidadService.crear_universidad(universidad)
-    return jsonify({"message": "Universidad creada exitosamente"}), 201
+    return jsonify("Universidad creada exitosamente"), 200
 
 
 @universidad_bp.route('/universidad/<hashid:id>', methods=['PUT'])
@@ -29,4 +29,9 @@ def actualizar_universidad(id):
     universidad = universidad_mapping.load(request.get_json())
     UniversidadService.actualizar_universidad(id, universidad)
     return jsonify("Universidad actualizada exitosamente"), 200
+
+@universidad_bp.route('/universidad/<hashid:id>', methods=['DELETE'])
+def borrar_universidad(id):
+    UniversidadService.borrar_por_id(id)
+    return jsonify("Universidad borrada exitosamente"), 200
 
