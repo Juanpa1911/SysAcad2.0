@@ -34,5 +34,3 @@ class AlumnoService:
     @staticmethod
     def borrar_alumno_id(alumno_id):
         return AlumnoRepository.borrar_alumno_id(alumno_id)
-    
-    
