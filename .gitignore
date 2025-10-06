@@ -141,3 +141,5 @@ pyvenv.cfg
 
 # add migration files
 migrations/
+
+eje.txt

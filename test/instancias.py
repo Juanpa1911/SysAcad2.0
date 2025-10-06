@@ -1,4 +1,4 @@
-from _pydatetime import datetime
+from datetime import datetime
 from datetime import date
 from app.models import (
     Alumno, Area, Autoridad, Cargo, CategoriaCargo, Departamento,
