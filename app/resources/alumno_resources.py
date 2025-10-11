@@ -10,7 +10,7 @@ def buscar_todos():
     alumnos = AlumnoService.buscar_todos()
     return alumno_mapping.dump(alumnos, many=True), 200
 
-@alumno_bp.route('/alumno/<int:id>', methods=['GET'])
+@alumno_bp.route('/alumno/<hashid:id>', methods=['GET'])
 def buscar_alumno_id(id):
     alumno = AlumnoService.buscar_alumno_id(id)
     if alumno:
@@ -38,7 +38,7 @@ def crear_alumno():
     alumno = AlumnoService.crear_alumno(alumno)
     return alumno_mapping.dump(alumno), 201
 
-@alumno_bp.route('/alumno/<int:id>', methods=['PUT'])
+@alumno_bp.route('/alumno/<hashid:id>', methods=['PUT'])
 def actualizar_alumno(id):
     data = request.get_json()
     alumno = alumno_mapping.load(data)
@@ -47,7 +47,7 @@ def actualizar_alumno(id):
         return alumno_mapping.dump(alumno), 200
     return jsonify({"message": "Alumno no encontrado"}), 404
 
-@alumno_bp.route('/alumno/<int:id>', methods=['DELETE'])
+@alumno_bp.route('/alumno/<hashid:id>', methods=['DELETE'])
 def eliminar_alumno(id):
     alumno = AlumnoService.borrar_alumno_id(id)
     if alumno:

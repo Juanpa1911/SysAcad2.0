@@ -10,7 +10,7 @@ def buscar_todas():
     areas = AreaService.buscar_todos()
     return area_mapping.dump(areas, many=True), 200
 
-@area_bp.route('/area/<int:id>', methods=['GET'])
+@area_bp.route('/area/<hashid:id>', methods=['GET'])
 def buscar_area_id(id):
     area = AreaService.buscar_por_id(id)
     if area:
@@ -24,7 +24,7 @@ def crear_area():
     area = AreaService.crear_area(area)
     return area_mapping.dump(area), 201
 
-@area_bp.route('/area/<int:id>', methods=['PUT'])
+@area_bp.route('/area/<hashid:id>', methods=['PUT'])
 def actualizar_area(id):
     data = request.get_json()
     area = area_mapping.load(data)
@@ -33,7 +33,7 @@ def actualizar_area(id):
         return area_mapping.dump(area), 200
     return jsonify({"message": "Area no encontrada"}), 404
 
-@area_bp.route('/area/<int:id>', methods=['DELETE'])
+@area_bp.route('/area/<hashid:id>', methods=['DELETE'])
 def eliminar_area(id):
     area = AreaService.borrar_por_id(id)
     if area:
