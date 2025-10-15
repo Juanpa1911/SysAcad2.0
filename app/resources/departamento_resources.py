@@ -5,10 +5,12 @@ from app.mapping.departamento_mapping import DepartamentoMapping
 departamento_bp = Blueprint('departamento', __name__)
 departamento_mapping = DepartamentoMapping()
 
+
 @departamento_bp.route('/departamento', methods=['GET'])
 def buscar_todos():
     departamentos = DepartamentoService.buscar_todos()
     return departamento_mapping.dump(departamentos, many=True), 200
+
 
 @departamento_bp.route('/departamento/<hashid:id>', methods=['GET'])
 def buscar_departamento_id(id):
@@ -17,6 +19,7 @@ def buscar_departamento_id(id):
         return departamento_mapping.dump(departamento), 200
     return jsonify({"message": "Departamento no encontrado"}), 404
 
+
 @departamento_bp.route('/departamento', methods=['POST'])
 def crear_departamento():
     data = request.get_json()
@@ -24,14 +27,17 @@ def crear_departamento():
     DepartamentoService.crear_departamento(departamento)
     return departamento_mapping.dump(departamento), 201
 
+
 @departamento_bp.route('/departamento/<hashid:id>', methods=['PUT'])
 def actualizar_departamento(id):
     data = request.get_json()
     datos_actualizados = departamento_mapping.load(data)
-    departamento_actualizado = DepartamentoService.actualizar_departamento(datos_actualizados, id)
+    departamento_actualizado = DepartamentoService.actualizar_departamento(
+        id, datos_actualizados)
     if departamento_actualizado:
         return departamento_mapping.dump(departamento_actualizado), 200
     return jsonify({"message": "Departamento no encontrado"}), 404
+
 
 @departamento_bp.route('/departamento/<hashid:id>', methods=['DELETE'])
 def eliminar_departamento(id):
