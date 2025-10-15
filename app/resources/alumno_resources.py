@@ -35,7 +35,7 @@ def buscar_alumno_doc(nro_documento):
 def crear_alumno():
     data = request.get_json()
     alumno = alumno_mapping.load(data)
-    alumno = AlumnoService.crear_alumno(alumno)
+    AlumnoService.crear_alumno(alumno)
     return alumno_mapping.dump(alumno), 201
 
 @alumno_bp.route('/alumno/<hashid:id>', methods=['PUT'])

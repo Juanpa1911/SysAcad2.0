@@ -12,7 +12,7 @@ class Facultad(HashidMixin, db.Model):
     abreviatura: str = db.Column(db.String(10), nullable=False)  # NOT NULL
     directorio: str = db.Column(db.String(100), nullable=True)
     sigla: str = db.Column(db.String(10), nullable=True)
-    codigo_postal: str = db.Column(db.String(10), nullable=True)
+    codigoPostal: str = db.Column(db.String(10), nullable=True)
     ciudad: str = db.Column(db.String(50), nullable=True)
     domicilio: str = db.Column(db.String(100), nullable=True)
     telefono: str = db.Column(db.String(20), nullable=True)

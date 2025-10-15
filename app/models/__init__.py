@@ -16,4 +16,3 @@ from .relations import autoridades_materias
 from .autoridad import Autoridad
 from .tipo_documento import TipoDocumento
 from .alumno import Alumno
-

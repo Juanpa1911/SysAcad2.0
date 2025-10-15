@@ -5,4 +5,5 @@ from .grado_mapping import GradoMapping
 from .grupo_mapping import GrupoMapping
 from .materia_mapping import MateriaMapping
 from .cargo_mapping import CargoMapping
-
+from .departamento_mapping import DepartamentoMapping
+from .facultad_mapping import FacultadMapping
