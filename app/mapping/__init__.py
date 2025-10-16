@@ -7,3 +7,5 @@ from .materia_mapping import MateriaMapping
 from .cargo_mapping import CargoMapping
 from .departamento_mapping import DepartamentoMapping
 from .facultad_mapping import FacultadMapping
+from .autoridad_mapping import AutoridadMapping
+
