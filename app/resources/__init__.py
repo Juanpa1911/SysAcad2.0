@@ -7,3 +7,4 @@ from .area_resources import area_bp
 from .tipo_dedicacion_resources import tipo_dedicacion_bp
 from .departamento_resources import departamento_bp
 from .especialidad_resources import especialidad_bp
+from .autoridad_resources import autoridad_bp
