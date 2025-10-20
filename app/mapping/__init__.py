@@ -8,4 +8,5 @@ from .cargo_mapping import CargoMapping
 from .departamento_mapping import DepartamentoMapping
 from .facultad_mapping import FacultadMapping
 from .autoridad_mapping import AutoridadMapping
+from .categoria_cargo_mapping import CategoriaCargoMapping
 
