@@ -1,0 +1,143 @@
+{
+    "info": {
+        "_postman_id": "generic-crud-12345",
+        "name": "Generic CRUD API",
+        "description": "Colección genérica para probar cualquier recurso CRUD. Solo cambia la variable 'resource' en el entorno.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1. Listar Todos",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:5000/api/v1/departamento",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "departamento"
+                    ]
+                },
+                "description": "Obtiene la lista de todos los recursos. Cambia 'departamento' por el recurso que quieras probar."
+            },
+            "response": []
+        },
+        {
+            "name": "2. Buscar por ID",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:5000/api/v1/departamento/",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "departamento",
+                        ""
+                    ]
+                },
+                "description": "Busca un recurso específico por su hashid. Agrega el hashid al final de la URL."
+            },
+            "response": []
+        },
+        {
+            "name": "3. Crear Nuevo",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nombre\": \"Nuevo Registro\",\n    \"descripcion\": \"Descripción del nuevo registro\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/api/v1/departamento",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "departamento"
+                    ]
+                },
+                "description": "Crea un nuevo recurso. Cambia 'departamento' y ajusta el body según el modelo."
+            },
+            "response": []
+        },
+        {
+            "name": "4. Actualizar",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nombre\": \"Registro Actualizado\",\n    \"descripcion\": \"Descripción actualizada\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/api/v1/departamento/",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "departamento",
+                        ""
+                    ]
+                },
+                "description": "Actualiza un recurso existente. Agrega el hashid al final y ajusta el body."
+            },
+            "response": []
+        },
+        {
+            "name": "5. Eliminar",
+            "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:5000/api/v1/departamento/",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "api",
+                        "v1",
+                        "departamento",
+                        ""
+                    ]
+                },
+                "description": "Elimina un recurso por su hashid. Agrega el hashid al final de la URL."
+            },
+            "response": []
+        }
+    ]
+}
