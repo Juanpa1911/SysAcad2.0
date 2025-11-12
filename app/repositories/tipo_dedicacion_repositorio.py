@@ -9,6 +9,7 @@ class TipoDedicacionRepository:
     def crear (tipo_dedicacion):
         db.session.add(tipo_dedicacion)
         db.session.commit()
+        return tipo_dedicacion
 
     @staticmethod
     def buscar_por_id (id: int):
@@ -21,6 +22,7 @@ class TipoDedicacionRepository:
     @staticmethod
     def actualizar_tipo_dedicacion(tipo_dedicacion)-> TipoDedicacion:
         tipo_dedicacion_existente = db.session.merge(tipo_dedicacion)
+        db.session.commit()
         if not tipo_dedicacion_existente:
             return None
         return tipo_dedicacion_existente

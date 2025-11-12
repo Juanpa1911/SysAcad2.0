@@ -32,8 +32,7 @@ def crear_departamento():
 def actualizar_departamento(id):
     data = request.get_json()
     datos_actualizados = departamento_mapping.load(data)
-    departamento_actualizado = DepartamentoService.actualizar_departamento(
-        id, datos_actualizados)
+    departamento_actualizado = DepartamentoService.actualizar_departamento(id, datos_actualizados)
     if departamento_actualizado:
         return departamento_mapping.dump(departamento_actualizado), 200
     return jsonify({"message": "Departamento no encontrado"}), 404

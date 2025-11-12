@@ -45,7 +45,7 @@ class TipoDedicacionService:
         tipo_dedicacion_existente.nombre= tipo_dedicacion.nombre
         tipo_dedicacion_existente.observacion = tipo_dedicacion.observacion
         
-        return tipo_dedicacion_existente
+        return TipoDedicacionRepository.actualizar_tipo_dedicacion(tipo_dedicacion_existente)
     
     @staticmethod
     def borrar_por_id(id:int) -> TipoDedicacion:

@@ -21,16 +21,16 @@ def buscar_area_id(id):
 def crear_area():
     data = request.get_json()
     area = area_mapping.load(data)
-    area = AreaService.crear_area(area)
+    AreaService.crear_area(area)
     return area_mapping.dump(area), 201
 
 @area_bp.route('/area/<hashid:id>', methods=['PUT'])
 def actualizar_area(id):
     data = request.get_json()
-    area = area_mapping.load(data)
-    area = AreaService.actualizar_area(area, id)
-    if area:
-        return area_mapping.dump(area), 200
+    data_nueva = area_mapping.load(data)
+    area_actualizada = AreaService.actualizar_area(id, data_nueva)
+    if area_actualizada:
+        return area_mapping.dump(area_actualizada), 200
     return jsonify({"message": "Area no encontrada"}), 404
 
 @area_bp.route('/area/<hashid:id>', methods=['DELETE'])

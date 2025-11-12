@@ -2,14 +2,14 @@ from marshmallow import Schema, fields, post_load, validate
 from app.models import Alumno
 
 class AlumnoMapping(Schema):
-    hashid = fields.Integer(dump_only=True)
+    hashid = fields.String(dump_only=True)
     nombre = fields.String(required=True, validate=validate.Length(min=1, max=50))
     apellido = fields.String(required=True, validate=validate.Length(min=1, max=50))
     fecha_nacimiento = fields.String(required=True, validate=validate.Length(equal=10))  # formato YYYY-MM-DD
     sexo = fields.String(required=True, validate=validate.OneOf(["M", "F"]))
     nro_documento = fields.String(required=True, validate=validate.Length(min=1, max=20))
-    tipo_documento_id = fields.Integer(required=True)
-    nro_legajo = fields.Integer(required=True)
+    tipo_documento_id = fields.Integer(required=True, validate=validate.Range(min=1))
+    nro_legajo = fields.Integer(required=True, validate=validate.Range(min=1))
     fecha_ingreso = fields.Date(required=True)
 
     @post_load

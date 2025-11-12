@@ -1,3 +1,4 @@
+from marshmallow.fields import String
 from app import db
 from datetime import date
 from dataclasses import dataclass
@@ -13,11 +14,10 @@ class Alumno(HashidMixin, db.Model):
     nro_documento : str = db.Column(db.String(20), unique=True, nullable=False)
     tipo_documento_id : int = db.Column(db.Integer, db.ForeignKey('tipos_documento.id'), nullable=False)
     tipo_documento = db.relationship('TipoDocumento')
-    fecha_nacimiento = db.Column(db.String(10), nullable=False)  # formato YYYY-MM-DD
+    fecha_nacimiento: String = db.Column(db.String(10), nullable=False)  # formato YYYY-MM-DD
     sexo : str = db.Column(db.String(1), nullable=False)  # 'M' o 'F'
-    nro_legajo = db.Column(db.Integer, unique=True, nullable=False)
-    fecha_ingreso = db.Column(db.Date, nullable=False, default=date.today)
-    
+    nro_legajo: int = db.Column(db.Integer, unique=True, nullable=False)
+    fecha_ingreso: date = db.Column(db.Date, nullable=False, default=date.today)
     
     
                
