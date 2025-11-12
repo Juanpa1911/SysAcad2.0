@@ -22,10 +22,9 @@ class AreaRepository:
     
     @staticmethod
     def actualizar_area(area) -> Area:
-        area_existente = db.session.merge(area)
-        if not area_existente:
-            return None
-        return area_existente
+        db.session.merge(area)
+        db.session.commit()
+        return area
     
     @staticmethod
     def borrar_por_id(id: int) -> Area:

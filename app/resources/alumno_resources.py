@@ -42,7 +42,7 @@ def crear_alumno():
 def actualizar_alumno(id):
     data = request.get_json()
     alumno = alumno_mapping.load(data)
-    alumno = AlumnoService.actualizar_alumno(alumno, id)
+    AlumnoService.actualizar_alumno(alumno)
     if alumno:
         return alumno_mapping.dump(alumno), 200
     return jsonify({"message": "Alumno no encontrado"}), 404
