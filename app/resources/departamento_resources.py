@@ -1,6 +1,7 @@
 from flask import jsonify, Blueprint, request
 from app.services import DepartamentoService
 from app.mapping.departamento_mapping import DepartamentoMapping
+from sqlalchemy.exc import IntegrityError
 
 departamento_bp = Blueprint('departamento', __name__)
 departamento_mapping = DepartamentoMapping()
@@ -22,10 +23,13 @@ def buscar_departamento_id(id):
 
 @departamento_bp.route('/departamento', methods=['POST'])
 def crear_departamento():
-    data = request.get_json()
-    departamento = departamento_mapping.load(data)
-    DepartamentoService.crear_departamento(departamento)
-    return departamento_mapping.dump(departamento), 201
+    try:
+        data = request.get_json()
+        departamento = departamento_mapping.load(data)
+        DepartamentoService.crear_departamento(departamento)
+        return departamento_mapping.dump(departamento), 201
+    except IntegrityError:
+        return jsonify({"error": "Ya existe un departamento con ese nombre"}), 409
 
 
 @departamento_bp.route('/departamento/<hashid:id>', methods=['PUT'])
