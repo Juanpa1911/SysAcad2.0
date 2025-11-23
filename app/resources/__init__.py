@@ -11,3 +11,4 @@ from .autoridad_resources import autoridad_bp
 from .facultad_resources import facultad_bp
 from .categoria_cargo_resources import categoria_cargo_bp
 from .plan_resources import plan_bp
+from .tipo_documento_resources import tipo_doc_bp
