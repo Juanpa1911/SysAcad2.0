@@ -13,3 +13,4 @@ from .categoria_cargo_resources import categoria_cargo_bp
 from .plan_resources import plan_bp
 from .tipo_documento_resources import tipo_doc_bp
 from .grupo_resources import grupo_bp
+from .grado_resources import grado_bp
