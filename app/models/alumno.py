@@ -19,7 +19,4 @@ class Alumno(HashidMixin, db.Model):
     nro_legajo: int = db.Column(db.Integer, unique=True, nullable=False)
     fecha_ingreso: date = db.Column(db.Date, nullable=False, default=date.today)
     facultad_id: int = db.Column(db.Integer, db.ForeignKey('facultades.id'), nullable=True)
-    facultad = db.relationship('Facultad', lazy='joined')
-    
-    
-               
+    facultad = db.relationship('Facultad', lazy='joined')       

@@ -18,6 +18,18 @@ class FichaAlumnoServiceTest(BaseTestCase):
     def setUp(self):
         super().setUp()
         
+        # Buscar o crear TipoDocumento
+        from app.models.tipo_documento import TipoDocumento
+        from app.services.tipo_doc_service import TipoDocumentoService
+        
+        # Intentar buscar el tipo documento existente
+        self.tipo_doc = TipoDocumentoService.buscar_por_nombre("DNI")
+        if not self.tipo_doc:
+            # Si no existe, crearlo
+            self.tipo_doc = TipoDocumento()
+            self.tipo_doc.nombre = "DNI"
+            TipoDocumentoService.crear_tipo_documento(self.tipo_doc)
+        
         # Crear Universidad y Facultad
         self.universidad = Universidad()
         self.universidad.nombre = "Universidad Tecnológica Nacional"
@@ -33,14 +45,16 @@ class FichaAlumnoServiceTest(BaseTestCase):
         db.session.add(self.facultad)
         db.session.flush()
         
-        # Crear alumno con facultad asignada
-        self.alumno = nuevoAlumno(
-            apellido="García",
-            nombre="María",
-            nro_documento="35987654",
-            sexo="F",
-            nro_legajo=54321
-        )
+        # Crear alumno inicial de prueba
+        from app.models.alumno import Alumno
+        self.alumno = Alumno()
+        self.alumno.apellido = "García"
+        self.alumno.nombre = "María"
+        self.alumno.nro_documento = "35987654"
+        self.alumno.tipo_documento = self.tipo_doc
+        self.alumno.fecha_nacimiento = "1990-01-15"
+        self.alumno.sexo = "F"
+        self.alumno.nro_legajo = 54321
         self.alumno.facultad_id = self.facultad.id
         AlumnoService.crear_alumno(self.alumno)
     
