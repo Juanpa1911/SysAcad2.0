@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ficha del Alumno</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        padding: 30px;
+        font-size: 12pt;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 3px solid #333;
+      }
+
+      .header h1 {
+        color: #2c3e50;
+        font-size: 24pt;
+        margin-bottom: 10px;
+      }
+
+      .header h2 {
+        color: #555;
+        font-size: 16pt;
+        font-weight: normal;
+      }
+
+      .info-section {
+        margin-bottom: 25px;
+      }
+
+      .info-section h3 {
+        background-color: #3498db;
+        color: white;
+        padding: 10px;
+        margin-bottom: 15px;
+        font-size: 14pt;
+      }
+
+      .info-grid {
+        display: table;
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .info-row {
+        display: table-row;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .info-label {
+        display: table-cell;
+        font-weight: bold;
+        padding: 12px;
+        width: 40%;
+        background-color: #f8f9fa;
+        border-right: 1px solid #ddd;
+      }
+
+      .info-value {
+        display: table-cell;
+        padding: 12px;
+        width: 60%;
+      }
+
+      .footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 2px solid #333;
+        text-align: center;
+        font-size: 10pt;
+        color: #666;
+      }
+
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 5px;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>FICHA DEL ALUMNO</h1>
+      <h2>Sistema Académico - SysAcad 2.0</h2>
+    </div>
+
+    <div class="info-section">
+      <h3>Información Personal</h3>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Número de Legajo:</div>
+          <div class="info-value">
+            <span class="highlight">{{ nro_legajo }}</span>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Apellido y Nombre:</div>
+          <div class="info-value">{{ nombre_completo }}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Tipo de Documento:</div>
+          <div class="info-value">{{ tipo_documento }}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Número de Documento:</div>
+          <div class="info-value">{{ nro_documento }}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Fecha de Nacimiento:</div>
+          <div class="info-value">{{ fecha_nacimiento }}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Sexo:</div>
+          <div class="info-value">{{ sexo }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-section">
+      <h3>Información Académica</h3>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-label">Facultad:</div>
+          <div class="info-value">{{ facultad }}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Abreviatura Facultad:</div>
+          <div class="info-value">{{ facultad_abreviatura }}</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Fecha de Ingreso:</div>
+          <div class="info-value">{{ fecha_ingreso }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Documento generado el: {{ fecha_emision }}</p>
+      <p>
+        Este documento es informativo y no tiene validez oficial sin las firmas
+        correspondientes.
+      </p>
+    </div>
+  </body>
+</html>

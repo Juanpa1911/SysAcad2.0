@@ -44,3 +44,17 @@ class AlumnoRepository:
             db.session.delete(alumno)
             db.session.commit()
         return True
+    
+    @staticmethod
+    def obtener_ficha_completa(alumno_id):
+        """
+        Obtiene los datos completos del alumno para la ficha,
+        incluyendo las relaciones con otras entidades
+        """
+        alumno = Alumno.query.get(alumno_id)
+        if not alumno:
+            return None
+        
+        # Por ahora retornamos los datos básicos del alumno
+        # Cuando se agreguen relaciones con Facultad, se incluirán aquí
+        return alumno
