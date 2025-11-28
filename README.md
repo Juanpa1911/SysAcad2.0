@@ -33,6 +33,7 @@ SYSACAD 2.0 es un sistema académico desarrollado en Python. Diseñado bajo una 
 - Flask-Migrate==4.1.0
 - flask-marshmallow==1.3.0
 - marshmallow==4.0.0
+- weasyprint==65.1
 - reportlab==4.2.5
 - python-odt-template==0.5.1
 - docxtpl==0.20.0
